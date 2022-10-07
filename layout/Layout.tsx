@@ -1,30 +1,25 @@
-import Link from 'next/link';
 import { PropsWithChildren } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import NavItem from '../components/NavItem';
 
 export default function Layout({ children }: PropsWithChildren) {
+  const router = useRouter();
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link href={'/guide'}>
-              <a>가이드</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={'/'}>
-              <a>대피소</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={'/sptfund'}>
-              <a>지원금</a>
-            </Link>
-          </li>
+    <div
+      className={`${
+        router.pathname === '/' ? null : 'xl:w-[1280px]'
+      } w-full m-auto`}
+    >
+      <nav className="fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px]">
+        <ul className="flex items-center justify-around w-full text-xs sm:text-base">
+          <NavItem id={1} position="left" />
+          <NavItem id={2} />
+          <NavItem id={3} position="right" />
         </ul>
       </nav>
       {children}
       <footer></footer>
-    </>
+    </div>
   );
 }

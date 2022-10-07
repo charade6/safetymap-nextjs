@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.4.0",
     "@types/navermaps": "^3.0.17",
     "next": "12.3.1",
     "react": "18.2.0",
