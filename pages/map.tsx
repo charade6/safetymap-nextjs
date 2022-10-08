@@ -1,9 +1,10 @@
 import { NextPage } from 'next';
+import NaverMap from '../components/NaverMap';
 
 const Map: NextPage = () => {
   return (
     <>
-      <h2>Map</h2>
+      <NaverMap />
     </>
   );
 };
