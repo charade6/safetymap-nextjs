@@ -33,11 +33,11 @@ export default function NavItem({
     {
       id: 2,
       title: '대피소',
-      link: '/',
+      link: '/map',
       ico: (
         <IcoLocation
           className="group-hover:animate-bounce"
-          fill={router.pathname === '/' ? '#009548' : '#BDBDBD'}
+          fill={router.pathname === '/map' ? '#009548' : '#BDBDBD'}
         />
       ),
     },

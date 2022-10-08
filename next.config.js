@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   webpack: (config) => {
     config.module.rules.push({
@@ -9,6 +9,9 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     });
     return config;
+  },
+  async redirects() {
+    return [{ source: '/', destination: '/map', permanent: true }];
   },
 };
 
