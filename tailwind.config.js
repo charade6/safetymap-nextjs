@@ -16,6 +16,9 @@ module.exports = {
         map: "url('/ico/icon-location.svg')",
         money: "url('/ico/icon-money.svg')",
       },
+      fontFamily: {
+        sans: ['Pretendard'],
+      },
     },
   },
   plugins: [],

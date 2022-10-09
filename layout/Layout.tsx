@@ -7,7 +7,9 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <div
       className={`${
-        router.pathname === '/map' ? null : 'xl:w-[1280px]'
+        router.pathname === '/map' || router.pathname === '/404'
+          ? ''
+          : 'xl:w-[1280px]'
       } w-full m-auto`}
     >
       <nav className="fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px]">
