@@ -68,7 +68,7 @@ export default function NavItem({
           } group`}
         >
           {item!.ico}
-          <span className="">{item!.title}</span>
+          <span className="text-sm">{item!.title}</span>
         </a>
       </Link>
     </li>
