@@ -1,8 +1,8 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import IcoRunning from '../public/ico/icon-running.svg';
 import IcoLocation from '../public/ico/icon-location.svg';
 import IcoMoney from '../public/ico/icon-money.svg';
-import { useRouter } from 'next/router';
 
 export default function NavItem({
   id,
@@ -56,7 +56,7 @@ export default function NavItem({
   const item = navItems.find((e) => e.id === id);
 
   return (
-    <li className={`w-[33.333333336%]`}>
+    <li className="w-[33.333333336%]">
       <Link href={item!.link}>
         <a
           className={`flex flex-col items-center p-3 ${
@@ -74,3 +74,7 @@ export default function NavItem({
     </li>
   );
 }
+
+NavItem.defaultProps = {
+  position: undefined,
+};

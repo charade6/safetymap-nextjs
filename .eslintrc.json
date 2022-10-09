@@ -15,6 +15,26 @@
     "react/jsx-filename-extension": 0,
     "react/react-in-jsx-scope": 0,
     "react/jsx-props-no-spreading": 0,
-    "react/function-component-definition": 0
+    "react/function-component-definition": 0,
+    "react/no-array-index-key": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-nested-ternary": "off",
+    "no-plusplus": "off",
+    "no-undef": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

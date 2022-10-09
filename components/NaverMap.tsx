@@ -19,9 +19,9 @@ export default function NaverMap() {
     initMap();
   }, []);
 
-  return (
-    <>
-      <div className="w-full h-screen" ref={mapRef} />
-    </>
-  );
+  useEffect(() => {
+    console.log(naverMap);
+  }, [naverMap]);
+
+  return <div className="w-full h-screen" ref={mapRef} />;
 }

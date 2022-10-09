@@ -1,5 +1,4 @@
 import { PropsWithChildren } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import NavItem from '../components/NavItem';
 
@@ -19,7 +18,7 @@ export default function Layout({ children }: PropsWithChildren) {
         </ul>
       </nav>
       {children}
-      <footer></footer>
+      <footer />
     </div>
   );
 }

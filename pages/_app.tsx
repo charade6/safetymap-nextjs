@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Layout from '../layout/Layout';
 import Script from 'next/script';
+import Layout from '../layout/Layout';
 
 declare global {
   interface Window {
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Layout>
       <Script
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}`}
-        strategy="beforeInteractive"
+        // strategy="beforeInteractive"
       />
       <Script
         src="https://developers.kakao.com/sdk/js/kakao.js"

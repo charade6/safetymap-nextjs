@@ -19,7 +19,7 @@ export default function GuideDetail({ data }: { data: BehaviorTips[] }) {
 export async function getStaticPaths() {
   const pathArr: object[] = [];
   for (let i = 1; i < 18; i++) {
-    pathArr.push({ params: { id: `010${i > 9 ? i : '0' + i}` } });
+    pathArr.push({ params: { id: `010${i > 9 ? i : `0${i}`}` } });
   }
   return {
     paths: pathArr,

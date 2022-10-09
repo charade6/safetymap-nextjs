@@ -2,9 +2,9 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 
 const Guide: NextPage = () => {
-  const link = [];
+  const link: string[] = [];
   for (let i = 1; i < 18; i++) {
-    link.push(`guide/010${i > 9 ? i : '0' + i}`);
+    link.push(`guide/010${i > 9 ? i : `0${i}`}`);
   }
   return (
     <>
