@@ -15,7 +15,7 @@ export type EarthquakeIndoors = {
   mngps_telno: string;
 };
 
-export type TemporaryHousingFacility = {
+export type TemporaryHousing = {
   arcd: string;
   acmdfclty_sn: number;
   ctprvn_nm: string;
@@ -35,7 +35,7 @@ export type TemporaryHousingFacility = {
   mngps_telno: string;
 };
 
-export type EarthquakeOutdoorsShelter = {
+export type EarthquakeOutdoors = {
   arcd: string;
   acmdfclty_sn: number;
   ctprvn_nm: string;
@@ -51,17 +51,10 @@ export type EarthquakeOutdoorsShelter = {
 };
 
 export type TsunamiShelter = {
-  id: 9;
-  sido_name: string;
-  sigungu_name: string;
-  remarks: string;
-  shel_nm: string;
-  address: string;
-  lon: number;
-  lat: number;
-  shel_av: number;
-  lenth: number;
-  shel_div_type: string;
-  seismic: string;
-  height: number;
+  ctprvn_nm: string;
+  sgg_nm: string;
+  vt_acmdfclty_nm: string;
+  dtl_adres: string;
+  xcord: number;
+  ycord: number;
 };
