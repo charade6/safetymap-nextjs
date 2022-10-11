@@ -1,7 +1,7 @@
 import axios from 'axios';
 import https from 'https';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { TemporaryHousingFacility } from '../../../types/apiType';
+import { TemporaryHousing } from '../../../types/apiType';
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +14,7 @@ export default async function handler(
 
   const url = `https://apis.data.go.kr/1741000/TemporaryHousingFacilityVictim3/getTemporaryHousingFacilityVictim1List?serviceKey=${process.env.PUBLIC_DATA_API_KEY}&pageNo=${query.pageNm}&numOfRows=1000&type=json`;
 
-  const data: TemporaryHousingFacility[] = await axios
+  const data: TemporaryHousing[] = await axios
     .get(url, { httpsAgent })
     .then((response) => response.data.TemporaryHousingFacilityVictim[1].row);
 

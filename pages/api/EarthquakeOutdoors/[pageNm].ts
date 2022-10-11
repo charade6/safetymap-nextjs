@@ -1,7 +1,7 @@
 import axios from 'axios';
 import https from 'https';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { EarthquakeOutdoorsShelter } from '../../../types/apiType';
+import { EarthquakeOutdoors } from '../../../types/apiType';
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +14,7 @@ export default async function handler(
 
   const url = `https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake2/getArea1List?serviceKey=${process.env.PUBLIC_DATA_API_KEY}&pageNo=${query.pageNm}&numOfRows=1000&type=json`;
 
-  const data: EarthquakeOutdoorsShelter[] = await axios
+  const data: EarthquakeOutdoors[] = await axios
     .get(url, { httpsAgent })
     .then((response) => response.data.EarthquakeOutdoorsShelter[1].row);
 
