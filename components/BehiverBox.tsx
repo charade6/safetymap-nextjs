@@ -47,7 +47,7 @@ export default function BehaviorBox({
           </h2>
           <div className="flex justify-center w-full md:justify-end">
             <Ico
-              className="mr-0 md:mr-2 fill-white group-hover:fill-[#333333] w-[42px] h-[42px] sm:w-[56px] sm:h-[56px] md:w-[74px] md:h-[74px]"
+              className="mr-0 md:mr-2 fill-white group-hover:fill-[#333333] w-[42px] h-[42px] sm:w-[52px] sm:h-[52px] md:w-[63px] md:h-[63px] lg:w-[74px] lg:h-[74px]"
               viewBox="0 0 74 74"
             />
           </div>

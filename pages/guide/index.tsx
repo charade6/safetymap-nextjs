@@ -1,5 +1,7 @@
 import { NextPage } from 'next';
 import BehaviorBox from '../../components/BehiverBox';
+import IcoApple from '../../public/ico/icon-apple.svg';
+import IcoCheck from '../../public/ico/icon-check.svg';
 
 const Guide: NextPage = () => {
   return (
@@ -47,12 +49,50 @@ const Guide: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="w-full h-[300px] bg-slate-500">
+      <section className="w-full h-[300px] bg-[#F2F2F2]">
         <div />
       </section>
       <section>
-        <div className="w-full xl:w-[1280px] mx-auto">
-          <div>dd</div>
+        <div className="flex flex-col sm:flex-row xl:w-[1280px] my-10 mx-3 xl:mx-auto">
+          <a
+            className="flex sm:w-2/4 mb-7 sm:mb-0 mr-0 sm:mr-5 bg-[#F1F1F1] rounded-[10px] items-center"
+            href="https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IcoCheck
+              className="m-6 w-[38px] h-[38px] md:w-[44px] md:h-[44px]"
+              viewBox="0 0 44 44"
+            />
+            <div className="flex flex-col justify-center">
+              <h2 className="text-base font-medium sm:text-lg md:text-xl">
+                재난 대피 체크리스트
+              </h2>
+              <span className="text-xs sm:text-sm md:text-base">
+                나는 얼마나 준비했을까?
+              </span>
+            </div>
+          </a>
+
+          <a
+            className="flex sm:w-2/4 bg-[#F1F1F1] rounded-[10px]"
+            href="https://www.nongsaro.go.kr/portal/ps/psv/psvr/psvre/curationDtl.ps?menuId=PS03352&srchCurationNo=1536"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IcoApple
+              className="m-6 w-[42px] h-[42px] md:w-[50px] md:h-[50px]"
+              viewBox="3 0 54 54"
+            />
+            <div className="flex flex-col justify-center">
+              <h2 className="text-base font-medium sm:text-lg md:text-xl">
+                농업 피해 예방
+              </h2>
+              <span className="text-xs sm:text-sm md:text-base">
+                농업 피해를 예방하세요.
+              </span>
+            </div>
+          </a>
         </div>
       </section>
     </>
