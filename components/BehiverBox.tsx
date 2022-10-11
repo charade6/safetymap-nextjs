@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import IcoCollapse from '../public/ico/icon-collapse.svg';
 import IcoRain from '../public/ico/icon-rain.svg';
 import IcoSnow from '../public/ico/icon-snow.svg';
@@ -21,8 +20,16 @@ export default function BehaviorBox({
   icon: string;
   last?: boolean | undefined;
 }) {
-  const svgList = [IcoCollapse, IcoRain, IcoSnow];
-  const idx = svgList.findIndex((e) => e.name === icon);
+  interface icoType {
+    [key: string]: any;
+  }
+
+  const iconType: icoType = {
+    SvgIconCollapse: IcoCollapse,
+    SvgIconRain: IcoRain,
+    SvgIconSnow: IcoSnow,
+  };
+  const Ico: React.ElementType = iconType[icon];
 
   return (
     <Link href={link}>
@@ -34,14 +41,12 @@ export default function BehaviorBox({
         <div className="p-2">
           <div className={`w-1 h-full group-hover:invisible ${linecolor}`} />
         </div>
-        <div className="flex flex-col w-full p-6 group-hover:p-4">
+        <div className="flex w-full p-6 md:flex-col group-hover:p-4">
           <h2 className="text-2xl font-bold text-white group-hover:text-black">
             {children}
           </h2>
           <div className="flex items-end justify-end">
-            {React.createElement(svgList[idx], {
-              className: 'mr-2 fill-white group-hover:fill-[#333333]',
-            })}
+            <Ico className="mr-2 fill-white group-hover:fill-[#333333]" />
           </div>
         </div>
       </a>
