@@ -10,8 +10,9 @@ const Guide: NextPage = () => {
           <div className="flex">
             <BehaviorBox
               link="/guide/01001"
-              bgcolor="#FFD064"
-              linecolor="#EFB227"
+              bgcolor="bg-[#FFD064]"
+              hover="hover:border-[#FFD064]"
+              linecolor="bg-[#EFB227]"
               icon="SvgIconRain"
             >
               태풍&#183;폭우
@@ -20,8 +21,9 @@ const Guide: NextPage = () => {
             </BehaviorBox>
             <BehaviorBox
               link="/guide/01002"
-              bgcolor="#18BF69"
-              linecolor="#11A85A"
+              bgcolor="bg-[#18BF69]"
+              hover="hover:border-[#18BF69]"
+              linecolor="bg-[#11A85A]"
               icon="SvgIconCollapse"
             >
               지진&#183;해일
@@ -30,8 +32,9 @@ const Guide: NextPage = () => {
             </BehaviorBox>
             <BehaviorBox
               link="/guide/01003"
-              bgcolor="#6CC8EA"
-              linecolor="#3DB4DF"
+              bgcolor="bg-[#6CC8EA]"
+              hover="hover:border-[#6CC8EA]"
+              linecolor="bg-[#3DB4DF]"
               icon="SvgIconSnow"
               last
             >
@@ -44,6 +47,11 @@ const Guide: NextPage = () => {
       </section>
       <section className="w-full h-[300px] bg-slate-500">
         <div />
+      </section>
+      <section>
+        <div className="w-full xl:w-[1280px] mx-auto">
+          <div>dd</div>
+        </div>
       </section>
     </>
   );

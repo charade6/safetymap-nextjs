@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
 import IcoRunning from '../public/ico/icon-running.svg';
 import IcoLocation from '../public/ico/icon-location.svg';
 import IcoMoney from '../public/ico/icon-money.svg';
@@ -16,24 +17,11 @@ export default function NavItem({
   position?: string;
 }) {
   const router = useRouter();
-  const iconList = [
-    <IcoRunning
-      className="group-hover:animate-bounce"
-      fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'}
-    />,
-    <IcoLocation
-      className="group-hover:animate-bounce"
-      fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'}
-    />,
-    <IcoMoney
-      className="group-hover:animate-bounce"
-      fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'}
-    />,
-  ];
-  const idx = iconList.findIndex((e) => e.type.name === icon);
+  const iconList = [IcoRunning, IcoMoney, IcoLocation];
+  const idx = iconList.findIndex((e) => e.name === icon);
 
   return (
-    <li className="w-[33.333333336%]">
+    <li className="w-1/3">
       <Link href={link}>
         <a
           className={`flex flex-col items-center p-3 ${
@@ -44,7 +32,10 @@ export default function NavItem({
               : ''
           } group`}
         >
-          {iconList[idx]}
+          {React.createElement(iconList[idx], {
+            className: 'group-hover:animate-bounce',
+            fill: router.pathname.includes(link) ? '#009548' : '#BDBDBD',
+          })}
           <span className="text-sm">{children}</span>
         </a>
       </Link>
