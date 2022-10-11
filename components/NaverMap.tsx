@@ -7,6 +7,7 @@ import {
   EarthquakeOutdoors,
   TsunamiShelter,
 } from '../types/apiType';
+import Loading from './Loading';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -136,9 +137,7 @@ export default function NaverMap() {
 
   return (
     <div>
-      {!api && (
-        <div className="absolute z-30 w-full h-screen bg-black opacity-30" />
-      )}
+      {!api && <Loading />}
       <div className="w-full h-screen" ref={mapRef} />
     </div>
   );
