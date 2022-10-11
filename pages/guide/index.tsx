@@ -5,8 +5,10 @@ const Guide: NextPage = () => {
   return (
     <>
       <section>
-        <div className="w-full xl:w-[1280px] mx-auto my-12">
-          <h2 className="mb-3 text-2xl font-medium">주요 행동 요령</h2>
+        <div className="xl:w-[1280px] mx-3 xl:mx-auto my-12">
+          <h2 className="mb-3 text-base font-medium sm:text-xl md:text-2xl">
+            주요 행동 요령
+          </h2>
           <div className="flex">
             <BehaviorBox
               link="/guide/01001"

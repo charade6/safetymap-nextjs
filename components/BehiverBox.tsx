@@ -35,18 +35,21 @@ export default function BehaviorBox({
     <Link href={link}>
       <a
         className={`flex w-1/3 hover:border-8 hover:bg-white group ${
-          last ? '' : 'mr-6'
+          last ? '' : 'mr-2 sm:mr-4 md:mr-6 '
         } ${bgcolor} ${hover}`}
       >
-        <div className="p-2">
+        <div className="px-1 py-2 md:p-2">
           <div className={`w-1 h-full group-hover:invisible ${linecolor}`} />
         </div>
-        <div className="flex w-full p-6 md:flex-col group-hover:p-4">
-          <h2 className="text-2xl font-bold text-white group-hover:text-black">
+        <div className="flex flex-col-reverse items-center w-full p-4 md:p-6 md:items-baseline md:flex-col group-hover:p-2 md:group-hover:p-4">
+          <h2 className="mt-5 text-base font-bold text-white md:mt-0 sm:text-lg md:text-2xl group-hover:text-black">
             {children}
           </h2>
-          <div className="flex items-end justify-end">
-            <Ico className="mr-2 fill-white group-hover:fill-[#333333]" />
+          <div className="flex justify-center w-full md:justify-end">
+            <Ico
+              className="mr-0 md:mr-2 fill-white group-hover:fill-[#333333] w-[42px] h-[42px] sm:w-[56px] sm:h-[56px] md:w-[74px] md:h-[74px]"
+              viewBox="0 0 74 74"
+            />
           </div>
         </div>
       </a>
