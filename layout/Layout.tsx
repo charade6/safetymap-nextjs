@@ -2,12 +2,18 @@ import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import NavItem from '../components/NavItem';
 import IcoLogo from '../public/ico/icon-logo.svg';
+import HideNav from '../components/HideNav';
 
 export default function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
+
   return (
     <div>
-      <nav className="fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px]">
+      <nav
+        className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px] transition-all ${
+          HideNav() ? 'visible opacity-100' : 'invisible opacity-0'
+        }`}
+      >
         <ul className="flex items-center justify-around w-full text-xs sm:text-base">
           <NavItem link="/guide" icon="SvgIconRunning" position="left">
             가이드
