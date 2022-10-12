@@ -14,6 +14,7 @@ import IcoSideFour from '../public/ico/main_side_four.svg';
 import IcoGps from '../public/ico/icon-gps.svg';
 import IcoSeach from '../public/ico/icon-search.svg';
 import Loading from './Loading';
+// import KakaoShare from '../util/KakaoShare';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -125,7 +126,7 @@ export default function NaverMap() {
         map,
       });
       const infowindow = new naver.maps.InfoWindow({
-        content: `<div style="width:150px;text-align:center;padding:10px;">${filt[i].dtl_adres}</div>`,
+        content: `<div style="width:150px;text-align:center;padding:10px;font-size:13px"><span style="display:block;font-size:11px;font-weight:700">시설명(지역명)</span>${filt[i].vt_acmdfclty_nm}<span style="display:block;font-size:11px;font-weight:700">상세주소</span>${filt[i].dtl_adres}</div>`,
       });
       naver.maps.Event.addListener(marker, 'click', () => {
         if (infowindow.getMap()) {
@@ -172,8 +173,15 @@ export default function NaverMap() {
   return (
     <div>
       {isLoading && <Loading />}
+      {/* <button type="button" onClick={() => KakaoShare()}>
+        쉐어
+      </button> */}
       <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border border-[#151816] top-10 left-2/4 translate-x-[-50%] rounded-full">
-        <input className="w-5/6 ml-4" type="text" ref={inputRef} />
+        <input
+          className="w-5/6 ml-4 focus:outline-none"
+          type="text"
+          ref={inputRef}
+        />
         <div className="flex justify-center mr-4">
           <button onClick={() => findCurrentLocation()} type="button">
             <IcoGps className="w-[24px]" />
@@ -185,41 +193,41 @@ export default function NaverMap() {
       </div>
       <div className="fixed z-40 bg-white right-5 top-2/4 translate-y-[-50%] text-xs">
         <button
-          className="block w-[80px] h-[80px]"
+          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
           onClick={() => getData(1)}
           type="button"
         >
           <IcoSideOne
-            className="mx-auto mb-[6px] w-[44px] h-[44px]"
+            className="mx-auto mb-[6px] w-[44px] h-[44px] fill-black group-hover:fill-white"
             viewBox="0 0 512 436"
           />
           대피소
         </button>
         <button
-          className="block w-[80px] h-[80px]"
+          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
           onClick={() => getData(4)}
           type="button"
         >
           <IcoSideTwo
-            className="mx-auto mb-[6px] w-[40px] h-[40px]"
+            className="mx-auto mb-[6px] w-[40px] h-[40px] fill-black group-hover:fill-white"
             viewBox="0 0 512 452"
           />
           지진 해일 대피
         </button>
         <button
-          className="block w-[80px] h-[80px]"
+          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
           onClick={() => getData(2)}
           type="button"
         >
-          <IcoSideThree className="mx-auto mb-[6px]" />
+          <IcoSideThree className="mx-auto mb-[6px] fill-black group-hover:fill-white" />
           실내 지진 대피
         </button>
         <button
-          className="block w-[80px] h-[80px]"
+          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
           onClick={() => getData(3)}
           type="button"
         >
-          <IcoSideFour className="mx-auto mb-[6px]" />
+          <IcoSideFour className="mx-auto mb-[6px] fill-black group-hover:fill-white" />
           실외 지진 대피
         </button>
       </div>
