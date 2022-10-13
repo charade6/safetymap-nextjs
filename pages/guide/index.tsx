@@ -42,7 +42,7 @@ const Guide: NextPage = () => {
               icon="SvgIconSnow"
               last
             >
-              태풍&#183;폭우
+              한파&#183;폭설
               <br />
               행동 요령
             </BehaviorBox>
@@ -66,7 +66,7 @@ const Guide: NextPage = () => {
             />
             <div className="flex flex-col justify-center">
               <h2 className="text-base font-medium sm:text-lg md:text-xl">
-                재난 대피 체크리스트
+                재난 대비 체크리스트
               </h2>
               <span className="text-xs sm:text-sm md:text-base">
                 나는 얼마나 준비했을까?
