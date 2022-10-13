@@ -40,10 +40,7 @@ export default function NavItem({
               : ''
           } group`}
         >
-          <Ico
-            className="group-hover:animate-bounce"
-            fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'}
-          />
+          <Ico fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'} />
           <span className="text-sm">{children}</span>
         </a>
       </Link>
