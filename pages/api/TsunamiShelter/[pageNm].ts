@@ -40,8 +40,8 @@ export default async function handler(
           sgg_nme: el.sigungu_name,
           vt_acmdfclty_nm: el.shel_nm,
           dtl_adres: el.address,
-          xcode: el.lon,
-          ycode: el.lat,
+          xcord: el.lon,
+          ycord: el.lat,
         };
       }),
     );
