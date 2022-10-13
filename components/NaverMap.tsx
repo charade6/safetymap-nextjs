@@ -28,7 +28,7 @@ export default function NaverMap() {
       infowindow: naver.maps.InfoWindow;
     }[]
   >([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const [api, setApi] = useState<
     | TsunamiShelter[]
     | EarthquakeIndoors[]
@@ -102,6 +102,14 @@ export default function NaverMap() {
   };
 
   const updateMarkers = (map: naver.maps.Map) => {
+    if (markerList.current.length > 0) {
+      for (let i = 0; i < markerList.current.length; i++) {
+        markerList.current[i].infowindow.close();
+        markerList.current[i].marker.setMap(null);
+      }
+      markerList.current = [];
+    }
+
     const mapBounds = map.getBounds();
     const max = mapBounds.getMax();
     const min = mapBounds.getMin();
@@ -147,12 +155,10 @@ export default function NaverMap() {
   }, [mapRef]);
 
   useEffect(() => {
-    console.log(mapRef.current);
-  }, [mapRef.current]);
-
-  useEffect(() => {
     if (api && naverMap) {
-      updateMarkers(naverMap);
+      if (naverMap.getZoom() > 13) {
+        updateMarkers(naverMap);
+      }
       naverMap.addListener('idle', () => {
         if (naverMap.getZoom() > 13) {
           updateMarkers(naverMap);
