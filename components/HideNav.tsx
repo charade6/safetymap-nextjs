@@ -1,16 +1,15 @@
-/* eslint-disable no-unused-expressions */
 import { useEffect, useState } from 'react';
 
 export default function HideNav() {
   const [ScrollY, setScrollY] = useState(0);
-  const [NavStatus, setBtnStatus] = useState(true);
+  const [NavStatus, setNavStatus] = useState(true);
 
   const handleScroll = () => {
     setScrollY(window.pageYOffset);
     if (ScrollY < window.pageYOffset) {
-      setBtnStatus(false);
+      setNavStatus(false);
     } else {
-      setBtnStatus(true);
+      setNavStatus(true);
     }
   };
 
