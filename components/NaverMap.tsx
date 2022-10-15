@@ -14,7 +14,7 @@ import IcoSideFour from '../public/ico/main_side_four.svg';
 import IcoGps from '../public/ico/icon-gps.svg';
 import IcoSeach from '../public/ico/icon-search.svg';
 import Loading from './Loading';
-// import KakaoShare from '../util/KakaoShare';
+import KakaoShare from '../util/KakaoShare';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,9 @@ export default function NaverMap() {
   >();
 
   const findCurrentLocation = () => {
+    const markerImg: naver.maps.ImageIcon = {
+      url: './ico/icon-mymarker.svg',
+    };
     if (clMarker.current) {
       clMarker.current.setMap(null);
     }
@@ -50,6 +53,7 @@ export default function NaverMap() {
         clMarker.current = new naver.maps.Marker({
           position: latlng,
           map: naverMap,
+          icon: markerImg,
         });
         naverMap.setCenter(latlng);
       });
@@ -133,8 +137,29 @@ export default function NaverMap() {
         position: new naver.maps.LatLng(filt[i].ycord, filt[i].xcord),
         map,
       });
+
+      const infowindowDiv = document.createElement('div');
+      const spanElement1 = document.createElement('span');
+      const spanElement2 = document.createElement('span');
+      const buttonElement = document.createElement('button');
+      infowindowDiv.className = 'p-[10px] text-[13px] text-center w-[150px]';
+      spanElement1.className = 'block text-[11px] font-bold';
+      spanElement2.className = 'block text-[11px] font-bold';
+      spanElement1.append('시설명(지역명)');
+      spanElement2.append('상세주소');
+      buttonElement.append('공유');
+
+      buttonElement.addEventListener('click', () => KakaoShare());
+      infowindowDiv.append(
+        spanElement1,
+        filt[i].vt_acmdfclty_nm,
+        spanElement2,
+        filt[i].dtl_adres,
+        buttonElement,
+      );
+
       const infowindow = new naver.maps.InfoWindow({
-        content: `<div style="width:150px;text-align:center;padding:10px;font-size:13px"><span style="display:block;font-size:11px;font-weight:700">시설명(지역명)</span>${filt[i].vt_acmdfclty_nm}<span style="display:block;font-size:11px;font-weight:700">상세주소</span>${filt[i].dtl_adres}</div>`,
+        content: infowindowDiv,
       });
       naver.maps.Event.addListener(marker, 'click', () => {
         if (infowindow.getMap()) {
@@ -179,9 +204,6 @@ export default function NaverMap() {
   return (
     <div>
       {isLoading && <Loading />}
-      {/* <button type="button" onClick={() => KakaoShare()}>
-        쉐어
-      </button> */}
       <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border border-[#151816] top-10 left-2/4 translate-x-[-50%] rounded-full">
         <input
           className="w-5/6 ml-4 focus:outline-none"
