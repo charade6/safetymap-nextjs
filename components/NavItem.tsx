@@ -1,53 +1,44 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import IcoRunning from '../public/ico/icon-running.svg';
-import IcoLocation from '../public/ico/icon-location.svg';
-import IcoMoney from '../public/ico/icon-money.svg';
+import uuid from 'react-uuid';
+import ImportIcon from './SvgDynamic';
 
-export default function NavItem({
-  link,
-  icon,
-  children,
-  position,
-}: {
+interface Nav {
   link: string;
   icon: string;
-  children: React.ReactNode;
-  position?: string;
-}) {
-  const router = useRouter();
-
-  interface icoType {
-    [key: string]: any;
-  }
-
-  const iconType: icoType = {
-    SvgIconRunning: IcoRunning,
-    SvgIconLocation: IcoLocation,
-    SvgIconMoney: IcoMoney,
-  };
-  const Ico: React.ElementType = iconType[icon];
-
-  return (
-    <li className="w-1/3">
-      <Link href={link}>
-        <a
-          className={`flex flex-col items-center p-3 ${
-            position === 'left'
-              ? 'rounded-l-full'
-              : position === 'right'
-              ? 'rounded-r-full'
-              : ''
-          } group`}
-        >
-          <Ico fill={router.pathname.includes(link) ? '#009548' : '#BDBDBD'} />
-          <span className="text-sm">{children}</span>
-        </a>
-      </Link>
-    </li>
-  );
+  name: string;
 }
 
-NavItem.defaultProps = {
-  position: undefined,
-};
+export default function NavItem({ nav }: { nav: Nav[] }) {
+  const router = useRouter();
+
+  return (
+    <>
+      {nav.map((e, i) => {
+        return (
+          <li key={uuid()} className="w-1/3">
+            <Link href={e.link}>
+              <a
+                className={`flex flex-col items-center p-3 ${
+                  i === 0
+                    ? 'rounded-l-full'
+                    : nav.length - 1 === i
+                    ? 'rounded-r-full'
+                    : ''
+                } group`}
+              >
+                <ImportIcon
+                  icon={e.icon}
+                  fill={
+                    router.pathname.includes(e.link) ? '#009548' : '#BDBDBD'
+                  }
+                />
+                <span className="text-sm">{e.name}</span>
+              </a>
+            </Link>
+          </li>
+        );
+      })}
+    </>
+  );
+}

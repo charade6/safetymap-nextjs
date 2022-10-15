@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
+import BannerCarousel from '../../components/BannerCarousel';
 import BehaviorBox from '../../components/BehiverBox';
-import IcoApple from '../../public/ico/icon-apple.svg';
-import IcoCheck from '../../public/ico/icon-check.svg';
+import ImportIcon from '../../components/SvgDynamic';
 
 const Guide: NextPage = () => {
   return (
@@ -13,60 +13,64 @@ const Guide: NextPage = () => {
           </h2>
           <div className="flex">
             <BehaviorBox
-              link="/guide/01001"
-              bgcolor="bg-[#FFD064]"
-              hover="hover:border-[#FFD064]"
-              linecolor="bg-[#EFB227]"
-              icon="SvgIconRain"
-            >
-              태풍&#183;폭우
-              <br />
-              행동 요령
-            </BehaviorBox>
-            <BehaviorBox
-              link="/guide/01002"
-              bgcolor="bg-[#18BF69]"
-              hover="hover:border-[#18BF69]"
-              linecolor="bg-[#11A85A]"
-              icon="SvgIconCollapse"
-            >
-              지진&#183;해일
-              <br />
-              행동 요령
-            </BehaviorBox>
-            <BehaviorBox
-              link="/guide/01003"
-              bgcolor="bg-[#6CC8EA]"
-              hover="hover:border-[#6CC8EA]"
-              linecolor="bg-[#3DB4DF]"
-              icon="SvgIconSnow"
-              last
-            >
-              한파&#183;폭설
-              <br />
-              행동 요령
-            </BehaviorBox>
+              contents={[
+                {
+                  text: '태풍·폭우',
+                  link: '/guide/01001',
+                  icon: 'icon-rain',
+                },
+                {
+                  text: '지진·해일',
+                  link: '/guide/01001',
+                  icon: 'icon-collapse',
+                },
+                {
+                  text: '한파·폭설',
+                  link: '/guide/01001',
+                  icon: 'icon-snow',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
-      <section className="w-full h-[300px] bg-[#F2F2F2]">
-        <div />
+      <section className="flex w-full bg-[#F2F2F2] items-center">
+        <BannerCarousel
+          contents={[
+            {
+              text: '지하 공간 침수 시',
+              icon: 'icon-apple',
+              link: 'https://www.donga.com/news/amp/all/20220909/115382533/1',
+            },
+            {
+              text: '대피 시 반려 동물은',
+              icon: 'icon-rain',
+              link: 'https://m.blog.naver.com/animalscoop/221528135223',
+            },
+            {
+              text: '차량 침수 시',
+              icon: 'icon-snow',
+              link: 'https://www.korea.kr/news/visualNewsView.do?newsId=148904544',
+            },
+          ]}
+        />
       </section>
       <section>
-        <div className="flex flex-col sm:flex-row xl:w-[1280px] my-10 mx-3 xl:mx-auto">
+        <div className="flex flex-col sm:flex-row max-w-[1280px] my-10 mx-3 xl:mx-auto">
           <a
             className="flex sm:w-2/4 mb-7 sm:mb-0 mr-0 sm:mr-5 bg-[#F1F1F1] rounded-[10px] items-center"
             href="https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <IcoCheck
+            <ImportIcon
+              icon="icon-check"
               className="m-6 w-[38px] h-[38px] md:w-[44px] md:h-[44px]"
               viewBox="0 0 44 44"
             />
             <div className="flex flex-col justify-center">
               <h2 className="text-base font-medium sm:text-lg md:text-xl">
-                재난 대비 체크리스트
+                재난 대파 체크리스트
               </h2>
               <span className="text-xs sm:text-sm md:text-base">
                 나는 얼마나 준비했을까?
@@ -80,9 +84,10 @@ const Guide: NextPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <IcoApple
+            <ImportIcon
+              icon="icon-apple"
               className="m-6 w-[42px] h-[42px] md:w-[50px] md:h-[50px]"
-              viewBox="3 0 54 54"
+              viewBox="0 0 54 54"
             />
             <div className="flex flex-col justify-center">
               <h2 className="text-base font-medium sm:text-lg md:text-xl">

@@ -7,14 +7,9 @@ import {
   EarthquakeOutdoors,
   TsunamiShelter,
 } from '../types/apiType';
-import IcoSideOne from '../public/ico/main_side_one.svg';
-import IcoSideTwo from '../public/ico/main_side_two.svg';
-import IcoSideThree from '../public/ico/main_side_three.svg';
-import IcoSideFour from '../public/ico/main_side_four.svg';
-import IcoGps from '../public/ico/icon-gps.svg';
-import IcoSeach from '../public/ico/icon-search.svg';
 import Loading from './Loading';
 import KakaoShare from '../util/KakaoShare';
+import ImportIcon from './SvgDynamic';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -212,10 +207,10 @@ export default function NaverMap() {
         />
         <div className="flex justify-center mr-4">
           <button onClick={() => findCurrentLocation()} type="button">
-            <IcoGps className="w-[24px]" />
+            <ImportIcon icon="icon-gps" className="w-[24px]" />
           </button>
           <button className="ml-[20px]" type="button">
-            <IcoSeach className="w-[24px]" />
+            <ImportIcon icon="icon-search" className="w-[24px]" />
           </button>
         </div>
       </div>
@@ -225,7 +220,8 @@ export default function NaverMap() {
           onClick={() => getData(1)}
           type="button"
         >
-          <IcoSideOne
+          <ImportIcon
+            icon="main_side_one"
             className="mx-auto mb-[6px] w-[44px] h-[44px] fill-black group-hover:fill-white"
             viewBox="0 0 512 436"
           />
@@ -236,7 +232,8 @@ export default function NaverMap() {
           onClick={() => getData(4)}
           type="button"
         >
-          <IcoSideTwo
+          <ImportIcon
+            icon="main_side_two"
             className="mx-auto mb-[6px] w-[40px] h-[40px] fill-black group-hover:fill-white"
             viewBox="0 0 512 452"
           />
@@ -247,7 +244,10 @@ export default function NaverMap() {
           onClick={() => getData(2)}
           type="button"
         >
-          <IcoSideThree className="mx-auto mb-[6px] fill-black group-hover:fill-white" />
+          <ImportIcon
+            icon="main_side_three"
+            className="mx-auto mb-[6px] fill-black group-hover:fill-white"
+          />
           실내 지진 대피
         </button>
         <button
@@ -255,7 +255,10 @@ export default function NaverMap() {
           onClick={() => getData(3)}
           type="button"
         >
-          <IcoSideFour className="mx-auto mb-[6px] fill-black group-hover:fill-white" />
+          <ImportIcon
+            icon="main_side_four"
+            className="mx-auto mb-[6px] fill-black group-hover:fill-white"
+          />
           실외 지진 대피
         </button>
       </div>

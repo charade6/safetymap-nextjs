@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Ico404 from '../public/ico/icon-404.svg';
+import ImportIcon from '../components/SvgDynamic';
 
 export default function NotFound() {
   const router = useRouter();
@@ -7,7 +7,8 @@ export default function NotFound() {
   return (
     <div className="w-full h-screen bg-[#F4F5F6] overflow-hidden">
       <div className="flex flex-col lg:flex-row relative w-full xl:w-[1280px] h-screen m-auto justify-center lg:justify-start items-center">
-        <Ico404
+        <ImportIcon
+          icon="icon-404"
           className="lg:absolute w-[178px] h-[200px] lg:w-[890px] lg:h-[1000px] lg:right-[-280px] lg:top-[4%] opacity-100 lg:opacity-50"
           fill="#009548"
           viewBox="0 0 178 200"

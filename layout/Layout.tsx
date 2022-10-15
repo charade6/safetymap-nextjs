@@ -1,8 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import NavItem from '../components/NavItem';
-import IcoLogo from '../public/ico/icon-logo.svg';
 import HideNav from '../components/HideNav';
+import ImportIcon from '../components/SvgDynamic';
 
 export default function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
@@ -15,22 +15,20 @@ export default function Layout({ children }: PropsWithChildren) {
         }`}
       >
         <ul className="flex items-center justify-around w-full text-xs sm:text-base">
-          <NavItem link="/guide" icon="SvgIconRunning" position="left">
-            가이드
-          </NavItem>
-          <NavItem link="/map" icon="SvgIconLocation">
-            대피소
-          </NavItem>
-          <NavItem link="/sptfund" icon="SvgIconMoney" position="right">
-            지원금
-          </NavItem>
+          <NavItem
+            nav={[
+              { link: '/guide', icon: 'icon-running', name: '가이드' },
+              { link: '/map', icon: 'icon-location', name: '대피소' },
+              { link: '/sptfund', icon: 'icon-money', name: '지원금' },
+            ]}
+          />
         </ul>
       </nav>
       {children}
       {router.pathname === '/map' || router.pathname === '/404' ? null : (
         <footer className="flex flex-col h-[200px] bg-[#F2F2F2] text-center text-[#A2A8A5] justify-center">
           <h3 className="mb-2 text-base font-bold sm:text-lg md:text-xl">
-            <IcoLogo className="inline mr-3" />
+            <ImportIcon icon="icon-logo" className="inline mr-3" />
             주변 대피소 찾기
           </h3>
           <p className="text-xs sm:text-sm md:text-base">
