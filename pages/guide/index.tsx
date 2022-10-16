@@ -5,9 +5,9 @@ import ImportIcon from '../../components/SvgDynamic';
 
 const Guide: NextPage = () => {
   return (
-    <>
-      <section>
-        <div className="xl:w-[1280px] mx-3 xl:mx-auto my-12">
+    <main className="my-12">
+      <section className="mb-12">
+        <div className="xl:w-[1280px] mx-3 xl:mx-auto">
           <h2 className="mb-3 text-base font-medium sm:text-xl md:text-2xl">
             주요 행동 요령
           </h2>
@@ -34,31 +34,34 @@ const Guide: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="flex w-full bg-[#F2F2F2] items-center">
+      <section className="flex w-full mb-12 bg-[#F2F2F2] items-center">
         <BannerCarousel
           contents={[
             {
               text: '지하 공간 침수 시',
-              icon: 'icon-apple',
+              icon: 'icon-stairs',
               link: 'https://www.donga.com/news/amp/all/20220909/115382533/1',
+              viewBox: '0 0 160 160',
             },
             {
               text: '대피 시 반려 동물은',
-              icon: 'icon-rain',
+              icon: 'icon-dog',
               link: 'https://m.blog.naver.com/animalscoop/221528135223',
+              viewBox: '0 0 218 142',
             },
             {
               text: '차량 침수 시',
-              icon: 'icon-snow',
+              icon: 'icon-car',
               link: 'https://www.korea.kr/news/visualNewsView.do?newsId=148904544',
+              viewBox: '0 0 222 187',
             },
           ]}
         />
       </section>
       <section>
-        <div className="flex flex-col sm:flex-row max-w-[1280px] my-10 mx-3 xl:mx-auto">
+        <div className="flex flex-col sm:flex-row max-w-[1280px] mx-3 xl:mx-auto">
           <a
-            className="flex sm:w-2/4 mb-7 sm:mb-0 mr-0 sm:mr-5 bg-[#F1F1F1] rounded-[10px] items-center"
+            className="flex sm:w-2/4 mb-4 sm:mb-0 mr-0 sm:mr-5 bg-[#F1F1F1] rounded-[10px] items-center"
             href="https://m.safekorea.go.kr/idsiSFK/neo/main_m/chk/emergencySupplies.html"
             target="_blank"
             rel="noopener noreferrer"
@@ -100,7 +103,7 @@ const Guide: NextPage = () => {
           </a>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
