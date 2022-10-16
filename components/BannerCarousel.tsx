@@ -6,6 +6,7 @@ interface Contents {
   text: string;
   icon: string;
   link: string;
+  viewBox: string;
 }
 
 const BannerCarousel = ({ contents }: { contents: Contents[] }) => {
@@ -24,14 +25,17 @@ const BannerCarousel = ({ contents }: { contents: Contents[] }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex flex-col p-7">
+              <div className="flex flex-col md:h-[250px] md:flex-row p-7 box-border">
                 <h1 className="text-xl font-bold text-white sm:text-2xl md:text-3xl">
                   {e.text}
                   <br />
                   어떻게 하지?
                 </h1>
-                {/* <Ico className="w-fit h-[80px] ml-auto" viewBox="0 0 52 52" /> */}
-                <ImportIcon icon={e.icon} className="ml-auto w-fit h-[80px]" />
+                <ImportIcon
+                  icon={e.icon}
+                  className="ml-auto mt-auto w-fit h-[114px]"
+                  viewBox={e.viewBox}
+                />
               </div>
             </a>
           );

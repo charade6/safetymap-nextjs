@@ -25,7 +25,7 @@ export default function BehaviorBox({
           <Link href={e.link} key={uuid()}>
             <a
               className={`flex w-1/3 hover:border-8 hover:bg-white group ${
-                contents.length - 1 === i ? '' : 'mr-2 sm:mr-4 md:mr-6 '
+                contents.length - 1 === i ? '' : 'mr-3 sm:mr-4 md:mr-5 '
               } ${colors[i].color1}`}
             >
               <div className="px-1 py-2 md:p-2">
