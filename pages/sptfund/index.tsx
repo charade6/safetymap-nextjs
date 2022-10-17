@@ -37,7 +37,7 @@ const SupportFund: NextPage = () => {
           <ImportIcon
             icon="icon-rainbow"
             className="w-[94px] sm:w-[106px] md:w-[118px] md:h-fit ml-auto md:ml-0 md:my-auto"
-            viewBox="0 0 139 107"
+            viewBox="0 0 94 73"
           />
         </a>
         <a
@@ -51,7 +51,11 @@ const SupportFund: NextPage = () => {
             <br />
             자원 봉사자 모집
           </h2>
-          <ImportIcon icon="icon-money" />
+          <ImportIcon
+            icon="icon-hearthand"
+            className="w-[55px] md:w-[63px] h-fit"
+            viewBox="0 0 67 67"
+          />
         </a>
         <a
           href="https://opengov.seoul.go.kr/public/19699644"
@@ -70,9 +74,9 @@ const SupportFund: NextPage = () => {
             집수리 신청
           </h2>
           <ImportIcon
-            icon="icon-money"
-            className="w-[50px] h-[50px] ml-auto"
-            viewBox="0 0 40 40"
+            icon="icon-hearthouse"
+            className="w-[50px] h-fit md:w-[63px] ml-auto"
+            viewBox="0 0 50 56"
           />
         </a>
         <a
@@ -82,9 +86,9 @@ const SupportFund: NextPage = () => {
           rel="noopener noreferrer"
         >
           <ImportIcon
-            icon="icon-apple"
-            className="mr-6 w-[42px] h-[42px] md:w-[50px] md:h-[50px]"
-            viewBox="0 0 54 54"
+            icon="icon-heartcommunication"
+            className="mr-6 w-fit h-[68px] md:h-[52px]"
+            viewBox="0 0 79 69"
           />
           <h2 className="hidden text-xl font-medium md:block">
             재난 심리 회복 지원 센터
@@ -102,9 +106,9 @@ const SupportFund: NextPage = () => {
           rel="noopener noreferrer"
         >
           <ImportIcon
-            icon="icon-apple"
-            className="ml-auto md:ml-0 md:mr-6 w-fit h-2/4 md:w-[50px] md:h-[50px]"
-            viewBox="0 0 54 54"
+            icon="icon-plusbox"
+            className="ml-auto md:ml-0 md:mr-6 w-fit h-[55px] md:h-[47px]"
+            viewBox="0 0 55 55"
           />
           <h2 className="hidden text-xl font-medium md:block">
             이재민 구호 지원 안내

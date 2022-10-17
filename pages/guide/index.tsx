@@ -53,7 +53,7 @@ const Guide: NextPage = () => {
               text: '차량 침수 시',
               icon: 'icon-car',
               link: 'https://www.korea.kr/news/visualNewsView.do?newsId=148904544',
-              viewBox: '0 0 222 187',
+              viewBox: '23 15 180 175',
             },
           ]}
         />
