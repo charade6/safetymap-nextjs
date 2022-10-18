@@ -24,7 +24,7 @@ const SupportFund: NextPage = () => {
           </h1>
           <ImportIcon
             icon="main_side_one"
-            className="w-[43px] sm:w-[54px] h-fit fill-[#151816]"
+            className="w-[43px] sm:w-[54px] h-2/4 sm:h-fit fill-[#151816]"
             viewBox="0 0 512 436"
           />
         </a>
@@ -87,7 +87,7 @@ const SupportFund: NextPage = () => {
         >
           <ImportIcon
             icon="icon-heartcommunication"
-            className="mr-6 w-fit h-[68px] md:h-[52px]"
+            className="mr-6 w-fit h-[55px] md:h-[52px]"
             viewBox="0 0 79 69"
           />
           <h2 className="hidden text-xl font-medium md:block">
