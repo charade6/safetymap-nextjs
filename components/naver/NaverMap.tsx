@@ -34,6 +34,8 @@ export default function NaverMap() {
   const findCurrentLocation = () => {
     const markerImg: naver.maps.ImageIcon = {
       url: './ico/icon-mymarker.svg',
+      scaledSize: new naver.maps.Size(50, 50),
+      anchor: naver.maps.Position.CENTER,
     };
     if (clMarker.current) {
       clMarker.current.setMap(null);
@@ -49,6 +51,8 @@ export default function NaverMap() {
           position: latlng,
           map: naverMap,
           icon: markerImg,
+          zIndex: 30,
+          clickable: false,
         });
         naverMap.setCenter(latlng);
       });
