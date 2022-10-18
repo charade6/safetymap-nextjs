@@ -12,14 +12,14 @@ export default function Layout({ children }: PropsWithChildren) {
     { link: '/map', icon: 'icon-location', name: '대피소' },
     { link: '/sptfund', icon: 'icon-money', name: '지원금' },
   ];
+  const title = `주변 대피소 찾기 | ${
+    navList.find((e) => router.pathname.includes(e.link))?.name
+  }`;
 
   return (
     <div>
       <Head>
-        <title>
-          주변 대피소 찾기&#160;&#124;&#160;
-          {navList.find((e) => router.pathname.includes(e.link))?.name}
-        </title>
+        <title>{title}</title>
       </Head>
       <nav
         className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px] transition-all ${
