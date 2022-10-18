@@ -6,10 +6,10 @@ import {
   EarthquakeIndoors,
   EarthquakeOutdoors,
   TsunamiShelter,
-} from '../types/apiType';
-import Loading from './Loading';
-import KakaoShare from '../util/KakaoShare';
-import ImportIcon from './SvgDynamic';
+} from '../../types/apiType';
+import Loading from '../Loading';
+import ImportIcon from '../SvgDynamic';
+import InfowindowBox from './InfowindowBox';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -68,7 +68,6 @@ export default function NaverMap() {
       { id: 4, name: 'TsunamiShelter', page: 1 },
     ];
     const menu = menuList.find((e) => e.id === id);
-
     const fetchList = [];
     for (let i = 0; i < menu!.page; i++) {
       fetchList.push(axios.get(`/api/${menu!.name}/${i + 1}`));
@@ -92,7 +91,7 @@ export default function NaverMap() {
   const initMap = () => {
     if (mapRef.current) {
       const mapOptions = {
-        center: { lat: 37.3595704, lng: 127.105399 },
+        center: { lat: 37.40404429977153, lng: 126.93065304776769 },
         zoom: 15,
       };
       const map = new naver.maps.Map(mapRef.current, mapOptions);
@@ -133,25 +132,12 @@ export default function NaverMap() {
         map,
       });
 
-      const infowindowDiv = document.createElement('div');
-      const spanElement1 = document.createElement('span');
-      const spanElement2 = document.createElement('span');
-      const buttonElement = document.createElement('button');
-      infowindowDiv.className = 'p-[10px] text-[13px] text-center w-[150px]';
-      spanElement1.className = 'block text-[11px] font-bold';
-      spanElement2.className = 'block text-[11px] font-bold';
-      spanElement1.append('시설명(지역명)');
-      spanElement2.append('상세주소');
-      buttonElement.append('공유');
-
-      buttonElement.addEventListener('click', () => KakaoShare());
-      infowindowDiv.append(
-        spanElement1,
-        filt[i].vt_acmdfclty_nm,
-        spanElement2,
-        filt[i].dtl_adres,
-        buttonElement,
-      );
+      const infowindowDiv = InfowindowBox({
+        name: filt[i].vt_acmdfclty_nm,
+        address: filt[i].dtl_adres,
+        lat: filt[i].ycord,
+        lng: filt[i].xcord,
+      });
 
       const infowindow = new naver.maps.InfoWindow({
         content: infowindowDiv,

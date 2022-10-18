@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import NaverMap from '../components/NaverMap';
+import NaverMap from '../components/naver/NaverMap';
 
 const Map: NextPage = () => {
   return <NaverMap />;
