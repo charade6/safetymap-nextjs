@@ -59,6 +59,27 @@ export default function NaverMap() {
     }
   };
 
+  const searchAddress = () => {
+    if (inputRef.current?.value) {
+      naver.maps.Service.geocode(
+        { query: inputRef.current.value },
+        (status, response) => {
+          if (status !== naver.maps.Service.Status.OK) {
+            return alert('Something Wrong!');
+          }
+          if (response.v2.meta.totalCount === 0) {
+            return alert('올바른 주소를 입력해주세요.');
+          }
+          const result = response.v2.addresses[0];
+          const lat = Number(result.y);
+          const lng = Number(result.x);
+
+          return naverMap?.setCenter(new naver.maps.LatLng(lat, lng));
+        },
+      );
+    }
+  };
+
   const getData = async (id: number) => {
     setIsLoading(true);
     const menuList: {
@@ -192,6 +213,12 @@ export default function NaverMap() {
       <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border border-[#151816] top-10 left-2/4 translate-x-[-50%] rounded-full">
         <input
           className="w-5/6 ml-4 focus:outline-none"
+          placeholder="현재 위치를 입력해주세요."
+          onKeyUp={(e) => {
+            if (e.key === 'Enter') {
+              searchAddress();
+            }
+          }}
           type="text"
           ref={inputRef}
         />
@@ -199,7 +226,11 @@ export default function NaverMap() {
           <button onClick={() => findCurrentLocation()} type="button">
             <ImportIcon icon="icon-gps" className="w-[24px]" />
           </button>
-          <button className="ml-[20px]" type="button">
+          <button
+            className="ml-[20px]"
+            onClick={() => searchAddress()}
+            type="button"
+          >
             <ImportIcon icon="icon-search" className="w-[24px]" />
           </button>
         </div>
