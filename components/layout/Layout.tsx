@@ -1,27 +1,33 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import NavItem from '../components/NavItem';
-import HideNav from '../components/HideNav';
-import ImportIcon from '../components/SvgDynamic';
+import Head from 'next/head';
+import NavItem from '../NavItem';
+import HideNav from '../HideNav';
+import ImportIcon from '../SvgDynamic';
 
 export default function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
+  const navList = [
+    { link: '/guide', icon: 'icon-running', name: '가이드' },
+    { link: '/map', icon: 'icon-location', name: '대피소' },
+    { link: '/sptfund', icon: 'icon-money', name: '지원금' },
+  ];
 
   return (
     <div>
+      <Head>
+        <title>
+          주변 대피소 찾기&#160;&#124;&#160;
+          {navList.find((e) => router.pathname.includes(e.link))?.name}
+        </title>
+      </Head>
       <nav
         className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px] transition-all ${
           HideNav() ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
         <ul className="flex items-center justify-around w-full text-xs sm:text-base">
-          <NavItem
-            nav={[
-              { link: '/guide', icon: 'icon-running', name: '가이드' },
-              { link: '/map', icon: 'icon-location', name: '대피소' },
-              { link: '/sptfund', icon: 'icon-money', name: '지원금' },
-            ]}
-          />
+          <NavItem nav={navList} />
         </ul>
       </nav>
       {children}

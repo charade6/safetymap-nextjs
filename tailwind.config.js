@@ -2,7 +2,6 @@
 module.exports = {
   mode: 'jit',
   content: [
-    './layout/Layout.tsx',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],

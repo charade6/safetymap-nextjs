@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
-import Layout from '../layout/Layout';
+import Layout from '../components/layout/Layout';
 
 declare global {
   interface Window {
