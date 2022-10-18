@@ -81,13 +81,13 @@ const SupportFund: NextPage = () => {
         </a>
         <a
           href="https://www.redcross.or.kr/voluntary/recovery_support.do"
-          className="flex items-center col-span-10 md:col-span-5 h-[120px] md:h-fit p-6 md:px-8 rounded-xl bg-[#FFF7E4]"
+          className="flex flex-row-reverse md:flex-row items-center justify-between md:justify-start col-span-10 md:col-span-5 h-[120px] md:h-fit p-6 md:px-8 rounded-xl bg-[#FFF7E4]"
           target="_blank"
           rel="noopener noreferrer"
         >
           <ImportIcon
             icon="icon-heartcommunication"
-            className="mr-6 w-fit h-[55px] md:h-[52px]"
+            className="md:mr-6 w-fit h-[55px] md:h-[52px]"
             viewBox="0 0 79 69"
           />
           <h2 className="hidden text-xl font-medium md:block">
