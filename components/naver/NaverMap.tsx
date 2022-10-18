@@ -68,12 +68,12 @@ export default function NaverMap() {
       { id: 4, name: 'TsunamiShelter', page: 1 },
     ];
     const menu = menuList.find((e) => e.id === id);
-    const fetchList = [];
+    const requestList = [];
     for (let i = 0; i < menu!.page; i++) {
-      fetchList.push(axios.get(`/api/${menu!.name}/${i + 1}`));
+      requestList.push(axios.get(`/api/${menu!.name}/${i + 1}`));
     }
 
-    await axios.all(fetchList).then(
+    await axios.all(requestList).then(
       axios.spread((...responses) => {
         const list:
           | TemporaryHousing[]
@@ -108,9 +108,9 @@ export default function NaverMap() {
       markerList.current = [];
     }
 
-    const mapBounds = map.getBounds();
-    const max = mapBounds.getMax();
-    const min = mapBounds.getMin();
+    const mapBounds: naver.maps.Bounds = map.getBounds();
+    const max: naver.maps.Point = mapBounds.getMax();
+    const min: naver.maps.Point = mapBounds.getMin();
     const filt = api!.filter(
       (e) =>
         e.xcord > min.x &&
