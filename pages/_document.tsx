@@ -16,6 +16,8 @@ export default function Document() {
           src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}&submodules=geocoder`}
           strategy="beforeInteractive"
         />
+        <link rel="icon" sizes="16x16" href="/favicon-16x16.ico" />
+        <link rel="icon" sizes="32x32" href="/favicon-32x32.ico" />
       </Head>
       <body>
         <Main />
