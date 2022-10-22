@@ -12,10 +12,10 @@ export default function KakaoShare({
       title: '대피소 찾기',
       description: name,
       imageUrl:
-        'http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
+        'https://64.media.tumblr.com/db707ec4d468a23273fe4353c86fbd3e/df33f1c96f9eea5b-d6/s2048x3072/d0b88139d9f9250ccfff428c3ebc5d4a315025bf.jpg',
       link: {
-        mobileWebUrl: 'https://safetymap-nextjs.vercel.app/guide',
-        webUrl: 'https://safetymap-nextjs.vercel.app/guide',
+        mobileWebUrl: 'https://safetymap-nextjs.vercel.app',
+        webUrl: 'https://safetymap-nextjs.vercel.app',
       },
     },
     buttonTitle: '홈페이지로',
