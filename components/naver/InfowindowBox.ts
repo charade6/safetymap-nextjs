@@ -48,14 +48,16 @@ export default function InfowindowBox({
   drctnIco.setAttribute('width', '16');
   drctnIco.appendChild(path2);
   drctnIco.setAttribute('viewBox', '0 0 576 512');
-  shareIco.classList.add('mx-auto', 'mb-1');
-  drctnIco.classList.add('mx-auto', 'mb-1');
+  shareIco.classList.add('mx-auto');
+  drctnIco.classList.add('mx-auto');
 
   infowindowDiv.classList.add(
     'p-[10px]',
     'text-[13px]',
     'text-center',
     'w-[150px]',
+    'leading-[14px]',
+    'h-full',
   );
   spanElement1.classList.add(
     'block',
