@@ -22,7 +22,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <title>{title}</title>
       </Head>
       <nav
-        className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white rounded-full bottom-[3%] left-2/4 shadow-nav sm:w-[460px] transition-all ${
+        className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white border rounded-full bottom-[3%] left-2/4 shadow-nav max-w-[460px] transition-all ${
           HideNav() ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >

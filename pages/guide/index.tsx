@@ -7,7 +7,7 @@ const Guide: NextPage = () => {
   return (
     <main className="my-12">
       <section className="mb-12">
-        <div className="xl:w-[1280px] mx-3 xl:mx-auto">
+        <div className="max-w-[1280px] mx-3 xl:mx-auto">
           <h2 className="mb-3 text-base font-medium sm:text-xl md:text-2xl">
             주요 행동 요령
           </h2>
