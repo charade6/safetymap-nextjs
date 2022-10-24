@@ -8,7 +8,7 @@ const Guide: NextPage = () => {
     <main className="my-12">
       <section className="mb-12">
         <div className="max-w-[1280px] mx-3 xl:mx-auto">
-          <h2 className="mb-3 text-base font-medium sm:text-xl md:text-2xl">
+          <h2 className="mb-3 text-xl font-medium md:text-2xl">
             주요 행동 요령
           </h2>
           <div className="flex">
@@ -16,17 +16,17 @@ const Guide: NextPage = () => {
               contents={[
                 {
                   text: '태풍·폭우',
-                  link: '/guide/01001',
+                  link: '/guide/behaviorTips/1',
                   icon: 'icon-rain',
                 },
                 {
                   text: '지진·해일',
-                  link: '/guide/01001',
+                  link: '/guide/behaviorTips/2',
                   icon: 'icon-collapse',
                 },
                 {
                   text: '한파·폭설',
-                  link: '/guide/01001',
+                  link: '/guide/behaviorTips/3',
                   icon: 'icon-snow',
                 },
               ]}
@@ -73,7 +73,7 @@ const Guide: NextPage = () => {
             />
             <div className="flex flex-col justify-center">
               <h2 className="text-base font-medium sm:text-lg md:text-xl">
-                재난 대파 체크리스트
+                재난 대피 체크리스트
               </h2>
               <span className="text-xs sm:text-sm md:text-base">
                 나는 얼마나 준비했을까?
