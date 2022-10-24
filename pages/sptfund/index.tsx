@@ -4,9 +4,7 @@ import ImportIcon from '../../components/SvgDynamic';
 const SupportFund: NextPage = () => {
   return (
     <main className="max-w-[1280px] mx-3 my-12 xl:mx-auto">
-      <h2 className="mb-3 text-base font-medium sm:text-xl md:text-2xl">
-        대상별 지원 내역
-      </h2>
+      <h2 className="mb-3 text-xl font-medium md:text-2xl">대상별 지원 내역</h2>
       <div className="grid grid-flow-row-dense grid-cols-10 gap-x-3 gap-y-4 sm:gap-4">
         <a className="flex flex-col-reverse sm:flex-row items-center justify-between col-span-5 sm:h-[140px] p-6 md:px-8 rounded-xl bg-[#F4F5F6]">
           <h1 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
