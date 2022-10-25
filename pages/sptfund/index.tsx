@@ -6,7 +6,12 @@ const SupportFund: NextPage = () => {
     <main className="max-w-[1280px] mx-3 my-12 xl:mx-auto">
       <h2 className="mb-3 text-xl font-medium md:text-2xl">대상별 지원 내역</h2>
       <div className="grid grid-flow-row-dense grid-cols-10 gap-x-3 gap-y-4 sm:gap-4">
-        <a className="flex flex-col-reverse sm:flex-row items-center justify-between col-span-5 sm:h-[140px] p-6 md:px-8 rounded-xl bg-[#F4F5F6]">
+        <a
+          href="https://woobg.tistory.com/entry/2022%EB%85%84-%EC%A0%95%EB%B6%80-%EA%B5%AD%EB%AF%BC-%EC%9E%AC%EB%82%9C%EC%A7%80%EC%9B%90%EA%B8%88-%EC%B4%9D-%EC%A0%95%EB%A6%AC?gclid=EAIaIQobChMI2ZPDqcL6-gIVlquWCh0pbQE1EAMYASAAEgLC9fD_BwE"
+          className="flex flex-col-reverse sm:flex-row items-center justify-between col-span-5 sm:h-[140px] p-6 md:px-8 rounded-xl bg-[#F4F5F6]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h1 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
             재난 피해
           </h1>
@@ -16,7 +21,12 @@ const SupportFund: NextPage = () => {
             viewBox="0 0 40 40"
           />
         </a>
-        <a className="flex flex-col-reverse sm:flex-row items-center justify-between col-span-5 p-6 md:px-8 rounded-xl bg-[#F4F5F6]">
+        <a
+          href="https://www.gyeongju.go.kr/rainfall/page.do?mnu_uid=2239&"
+          className="flex flex-col-reverse sm:flex-row items-center justify-between col-span-5 p-6 md:px-8 rounded-xl bg-[#F4F5F6]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h1 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
             이재민
           </h1>
@@ -26,7 +36,12 @@ const SupportFund: NextPage = () => {
             viewBox="0 0 512 436"
           />
         </a>
-        <a className="flex flex-col-reverse md:flex-row justify-between col-span-10 md:col-span-6 row-span-2 p-6 md:px-8 rounded-xl bg-[#DEEAF4]">
+        <a
+          href="https://m.blog.naver.com/o2gunpo/222850799909"
+          className="flex flex-col-reverse md:flex-row justify-between col-span-10 md:col-span-6 row-span-2 p-6 md:px-8 rounded-xl bg-[#DEEAF4]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h1 className="text-2xl font-bold md:text-3xl md:mt-auto">
             2022년
             <br />
@@ -98,7 +113,7 @@ const SupportFund: NextPage = () => {
           </h2>
         </a>
         <a
-          href="https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%ED%98%B8%EC%9A%B0+%EC%B9%A8%EC%88%98+%EC%9D%B4%EC%9E%AC%EB%AF%BC+%EA%B5%AC%ED%98%B8+%EC%A7%80%EC%9B%90+%EC%95%88%EB%82%B4&oquery=%EC%9D%B4%EC%9E%AC%EB%AF%BC+%EA%B5%AC%ED%98%B8+%EC%A7%80%EC%9B%90+%EC%95%88%EB%82%B4&tqi=h0ik3sp0Jy0ssONilahssssstll-168421"
+          href="https://www.redcross.or.kr/voluntary/rescue_support.do"
           className="flex flex-col items-start md:items-center md:flex-row col-span-5 h-full p-6 md:px-8 rounded-xl bg-[#D9F2FF]"
           target="_blank"
           rel="noopener noreferrer"
