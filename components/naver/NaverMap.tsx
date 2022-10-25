@@ -19,6 +19,7 @@ export default function NaverMap() {
   const clMarker = useRef<naver.maps.Marker>();
   const [naverMap, setNaverMap] = useState<naver.maps.Map>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [notiHide, setNotiHide] = useState<boolean>(true);
   const markerList = useRef<
     {
       marker: naver.maps.Marker;
@@ -209,6 +210,9 @@ export default function NaverMap() {
             markerList.current[i].marker.setMap(null);
           }
           markerList.current = [];
+          setNotiHide(false);
+        } else {
+          setNotiHide(true);
         }
       });
     }
@@ -254,6 +258,14 @@ export default function NaverMap() {
         >
           <ImportIcon icon="icon-gps" className="w-[24px]" />
         </button>
+      </div>
+      <div
+        id="noti"
+        className={`fixed z-40 px-6 py-2 bg-white text-sm rounded-full shadow-nav left-2/4 top-24 translate-x-[-50%] ${
+          notiHide ? 'hidden' : 'block'
+        }`}
+      >
+        지도를 확대해 주세요!
       </div>
       <ReqBtns getData={getData} />
       <div className="w-full h-screen" ref={mapRef} />
