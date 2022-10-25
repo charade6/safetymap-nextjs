@@ -79,12 +79,7 @@ export default function BehaviorTipsDetail({
                   className={`my-4 ${activeIndex !== idx ? 'hidden' : 'block'}`}
                 >
                   {e
-                    .filter(
-                      (element) =>
-                        element.safetyCateNm3 === el &&
-                        element.contentsType !== 3 &&
-                        element.contentsType !== 4,
-                    )
+                    .filter((element) => element.safetyCateNm3 === el)
                     .map((element) => (
                       <React.Fragment key={uuid()}>
                         {element.safetyCate3 === '01011007' ||
