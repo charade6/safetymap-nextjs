@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +11,7 @@ import {
 import Loading from '../Loading';
 import ImportIcon from '../SvgDynamic';
 import InfowindowBox from './InfowindowBox';
+import ReqBtns from './ReqBtns';
 
 export default function NaverMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -25,7 +27,7 @@ export default function NaverMap() {
   >([]);
 
   const [api, setApi] = useState<
-    | TsunamiShelter[]
+    | EarthquakeOutdoors[]
     | EarthquakeIndoors[]
     | TemporaryHousing[]
     | TsunamiShelter[]
@@ -88,9 +90,9 @@ export default function NaverMap() {
       page: number;
     }[] = [
       { id: 1, name: 'TemporaryHousing', page: 15 },
-      { id: 2, name: 'EarthquakeIndoors', page: 6 },
-      { id: 3, name: 'EarthquakeOutdoors', page: 11 },
-      { id: 4, name: 'TsunamiShelter', page: 1 },
+      { id: 2, name: 'TsunamiShelter', page: 1 },
+      { id: 3, name: 'EarthquakeIndoors', page: 6 },
+      { id: 4, name: 'EarthquakeOutdoors', page: 11 },
     ];
     const menu = menuList.find((e) => e.id === id);
     const requestList = [];
@@ -125,14 +127,6 @@ export default function NaverMap() {
   };
 
   const updateMarkers = (map: naver.maps.Map) => {
-    if (markerList.current.length > 0) {
-      for (let i = 0; i < markerList.current.length; i++) {
-        markerList.current[i].infowindow.close();
-        markerList.current[i].marker.setMap(null);
-      }
-      markerList.current = [];
-    }
-
     const mapBounds: naver.maps.Bounds = map.getBounds();
     const max: naver.maps.Point = mapBounds.getMax();
     const min: naver.maps.Point = mapBounds.getMin();
@@ -143,6 +137,7 @@ export default function NaverMap() {
         e.ycord > min.y &&
         e.ycord < max.y,
     );
+
     for (let i = 0; i < markerList.current.length; i++) {
       if (!mapBounds.hasPoint(markerList.current[i].marker.getPosition())) {
         markerList.current[i].marker.setMap(null);
@@ -171,6 +166,8 @@ export default function NaverMap() {
         if (infowindow.getMap()) {
           infowindow.close();
         } else {
+          const po = marker.getPosition();
+          map.panTo(po, { duration: 500, easing: 'linear' });
           infowindow.open(map, marker);
         }
       });
@@ -187,8 +184,18 @@ export default function NaverMap() {
 
   useEffect(() => {
     if (api && naverMap) {
+      if (markerList.current.length > 0) {
+        for (let i = 0; i < markerList.current.length; i++) {
+          markerList.current[i].infowindow.close();
+          markerList.current[i].marker.setMap(null);
+        }
+        markerList.current = [];
+      }
       if (naverMap.getZoom() > 13) {
         updateMarkers(naverMap);
+      }
+      if (naverMap.hasListener('idle')) {
+        naverMap.clearListeners('idle');
       }
       naverMap.addListener('idle', () => {
         if (naverMap.getZoom() > 13) {
@@ -210,7 +217,7 @@ export default function NaverMap() {
   return (
     <div>
       {isLoading && <Loading />}
-      <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border border-[#151816] top-10 left-2/4 translate-x-[-50%] rounded-full">
+      <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border shadow-nav top-10 left-2/4 translate-x-[-50%] rounded-full">
         <input
           className="w-5/6 ml-4 focus:outline-none"
           placeholder="현재 위치를 입력해주세요."
@@ -223,7 +230,11 @@ export default function NaverMap() {
           ref={inputRef}
         />
         <div className="flex justify-center mr-4">
-          <button onClick={() => findCurrentLocation()} type="button">
+          <button
+            className="hidden sm:block"
+            onClick={() => findCurrentLocation()}
+            type="button"
+          >
             <ImportIcon icon="icon-gps" className="w-[24px]" />
           </button>
           <button
@@ -235,54 +246,16 @@ export default function NaverMap() {
           </button>
         </div>
       </div>
-      <div className="fixed z-40 bg-white right-5 top-2/4 translate-y-[-50%] text-xs">
+      <div className="fixed z-40 bg-white rounded-full left-[5%] bottom-[20%] shadow-nav">
         <button
-          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
-          onClick={() => getData(1)}
+          className="p-4 sm:hidden"
+          onClick={() => findCurrentLocation()}
           type="button"
         >
-          <ImportIcon
-            icon="main_side_one"
-            className="mx-auto mb-[6px] w-[44px] h-[44px] fill-black group-hover:fill-white"
-            viewBox="0 0 512 436"
-          />
-          대피소
-        </button>
-        <button
-          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
-          onClick={() => getData(4)}
-          type="button"
-        >
-          <ImportIcon
-            icon="main_side_two"
-            className="mx-auto mb-[6px] w-[40px] h-[40px] fill-black group-hover:fill-white"
-            viewBox="0 0 512 452"
-          />
-          지진 해일 대피
-        </button>
-        <button
-          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
-          onClick={() => getData(2)}
-          type="button"
-        >
-          <ImportIcon
-            icon="main_side_three"
-            className="mx-auto mb-[6px] fill-black group-hover:fill-white"
-          />
-          실내 지진 대피
-        </button>
-        <button
-          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
-          onClick={() => getData(3)}
-          type="button"
-        >
-          <ImportIcon
-            icon="main_side_four"
-            className="mx-auto mb-[6px] fill-black group-hover:fill-white"
-          />
-          실외 지진 대피
+          <ImportIcon icon="icon-gps" className="w-[24px]" />
         </button>
       </div>
+      <ReqBtns getData={getData} />
       <div className="w-full h-screen" ref={mapRef} />
     </div>
   );
