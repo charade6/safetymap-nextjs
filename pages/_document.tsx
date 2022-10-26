@@ -5,6 +5,10 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <meta
+          name="naver-site-verification"
+          content="c4240f7309199ead02257e16195f034975e92309"
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.min.css"
@@ -18,10 +22,6 @@ export default function Document() {
         />
         <link rel="icon" sizes="16x16" href="/favicon-16x16.ico" />
         <link rel="icon" sizes="32x32" href="/favicon-32x32.ico" />
-        <meta
-          name="naver-site-verification"
-          content="c4240f7309199ead02257e16195f034975e92309"
-        />
       </Head>
       <body>
         <Main />
