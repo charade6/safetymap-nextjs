@@ -143,7 +143,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
     ['01011', '01012', '01013'],
     ['01006', '01005'],
   ];
-  const titleList = ['태풍·폭우', '지진·해일', '한파·폭설'];
+  const titleList = ['태풍·호우', '지진·해일', '한파·대설'];
   const reqList = reqKeys[path - 1].map((e) =>
     axios.get(`${url}&safety_cate=${e}`),
   );

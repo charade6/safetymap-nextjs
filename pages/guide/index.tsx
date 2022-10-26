@@ -15,7 +15,7 @@ const Guide: NextPage = () => {
             <BehaviorBox
               contents={[
                 {
-                  text: '태풍·폭우',
+                  text: '태풍·호우',
                   link: '/guide/behaviorTips/1',
                   icon: 'icon-rain',
                 },
@@ -25,7 +25,7 @@ const Guide: NextPage = () => {
                   icon: 'icon-collapse',
                 },
                 {
-                  text: '한파·폭설',
+                  text: '한파·대설',
                   link: '/guide/behaviorTips/3',
                   icon: 'icon-snow',
                 },
