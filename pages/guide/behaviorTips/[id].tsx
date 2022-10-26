@@ -38,7 +38,12 @@ export default function BehaviorTipsDetail({
         {title} 행동 요령
       </h1>
       {data.map((e, i, a) => (
-        <div key={uuid()} className="bg-[#F2F2F2] mb-[1px]">
+        <div
+          key={uuid()}
+          className={`bg-[#F2F2F2] mb-[1px] ${
+            i === a.length - 1 && 'rounded-b-lg'
+          }`}
+        >
           <button
             className={`flex justify-between items-center w-full px-4 py-2 text-left bg-[#009548] text-white text-2xl after:w-3 after:h-3 after:border-t-2 after:border-r-2 after:transition-all ${
               active === i
@@ -47,7 +52,7 @@ export default function BehaviorTipsDetail({
             } ${
               i === 0
                 ? 'rounded-t-lg'
-                : i === a.length - 1
+                : active !== i && i === a.length - 1
                 ? 'rounded-b-lg'
                 : ''
             }`}
