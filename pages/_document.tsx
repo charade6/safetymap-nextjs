@@ -9,6 +9,10 @@ export default function Document() {
           name="naver-site-verification"
           content="c4240f7309199ead02257e16195f034975e92309"
         />
+        <meta
+          name="google-site-verification"
+          content="2YmO28hzY0QhcX4jEBYn_I6DOyT4VPJaBUN-fsO4stQ"
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.min.css"
