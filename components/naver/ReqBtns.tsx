@@ -9,6 +9,7 @@ export default function ReqBtns({
   getData: (id: number) => Promise<void>;
 }) {
   const [active, setActive] = useState<boolean>(true);
+  const [btnActive, setBtnActive] = useState<number | undefined>();
   const btnList: {
     name: string;
     icon: string;
@@ -50,16 +51,27 @@ export default function ReqBtns({
         type="button"
         onClick={() => (active ? setActive(false) : setActive(true))}
       />
-      {Array.from(Array(4).keys()).map((e, i) => (
+      {Array.from(Array(4).keys()).map((e, i, a) => (
         <button
           key={uuid()}
-          className="block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group"
-          onClick={() => getData(i + 1)}
+          className={`block w-[80px] h-[80px] hover:text-white hover:bg-[#009548] group ${
+            i === 0
+              ? 'rounded-tl-[4px]'
+              : i === a.length - 1
+              ? 'rounded-bl-[4px]'
+              : ''
+          } ${btnActive === i && 'bg-[#009548] text-white'}`}
+          onClick={() => {
+            getData(i + 1);
+            setBtnActive(i);
+          }}
           type="button"
         >
           <ImportIcon
             icon={btnList[i].icon}
-            className={`mx-auto mb-[6px] fill-black group-hover:fill-white ${btnList[i].style}`}
+            className={`mx-auto mb-[6px] group-hover:fill-white ${
+              btnList[i].style
+            } ${btnActive === i ? 'fill-white' : 'fill-black'}`}
             viewBox={btnList[i].viewBox}
           />
           {btnList[i].name}
