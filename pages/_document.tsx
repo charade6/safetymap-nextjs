@@ -13,6 +13,21 @@ export default function Document() {
           name="google-site-verification"
           content="2YmO28hzY0QhcX4jEBYn_I6DOyT4VPJaBUN-fsO4stQ"
         />
+        <meta
+          name="description"
+          content="내 위치 기반한 긴급 대피 장소를 알려드립니다."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="주변 대피소 찾기" />
+        <meta
+          property="og:description"
+          content="내 위치 기반한 긴급 대피 장소를 알려드립니다."
+        />
+        <meta
+          property="og:image"
+          content="https://safetymap-nextjs.vercel.app/favicon-32x32.ico"
+        />
+        <meta property="og:url" content="https://safetymap-nextjs.vercel.app" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.min.css"

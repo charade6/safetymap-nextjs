@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+Sitemap: https://safetymap-nextjs.netlify.app/sitemap.xml
