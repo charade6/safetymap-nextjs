@@ -128,54 +128,56 @@ export default function NaverMap() {
   };
 
   const updateMarkers = (map: naver.maps.Map) => {
-    const mapBounds: naver.maps.Bounds = map.getBounds();
-    const max: naver.maps.Point = mapBounds.getMax();
-    const min: naver.maps.Point = mapBounds.getMin();
-    const filt = api!.filter(
-      (e) =>
-        e.xcord > min.x &&
-        e.xcord < max.x &&
-        e.ycord > min.y &&
-        e.ycord < max.y,
-    );
+    if (map.getZoom() > 13) {
+      const mapBounds: naver.maps.Bounds = map.getBounds();
+      const max: naver.maps.Point = mapBounds.getMax();
+      const min: naver.maps.Point = mapBounds.getMin();
+      const filt = api!.filter(
+        (e) =>
+          e.xcord > min.x &&
+          e.xcord < max.x &&
+          e.ycord > min.y &&
+          e.ycord < max.y,
+      );
 
-    for (let i = 0; i < markerList.current.length; i++) {
-      if (!mapBounds.hasPoint(markerList.current[i].marker.getPosition())) {
-        markerList.current[i].marker.setMap(null);
-      }
-    }
-    markerList.current = markerList.current.filter(
-      (e) => e.marker.getMap() !== null,
-    );
-    for (let i = 0; i < filt.length; i++) {
-      const marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(filt[i].ycord, filt[i].xcord),
-        map,
-      });
-
-      const infowindowDiv = InfowindowBox({
-        name: filt[i].vt_acmdfclty_nm,
-        address: filt[i].dtl_adres,
-        lat: filt[i].ycord,
-        lng: filt[i].xcord,
-      });
-
-      const infowindow = new naver.maps.InfoWindow({
-        content: infowindowDiv,
-      });
-      naver.maps.Event.addListener(marker, 'click', () => {
-        if (infowindow.getMap()) {
-          infowindow.close();
-        } else {
-          const po = marker.getPosition();
-          map.panTo(po, { duration: 500, easing: 'linear' });
-          infowindow.open(map, marker);
+      for (let i = 0; i < markerList.current.length; i++) {
+        if (!mapBounds.hasPoint(markerList.current[i].marker.getPosition())) {
+          markerList.current[i].marker.setMap(null);
         }
-      });
-      naver.maps.Event.addListener(naverMap, 'drag', () => {
-        infowindow.close();
-      });
-      markerList.current.push({ marker, infowindow });
+      }
+      markerList.current = markerList.current.filter(
+        (e) => e.marker.getMap() !== null,
+      );
+      for (let i = 0; i < filt.length; i++) {
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(filt[i].ycord, filt[i].xcord),
+          map,
+        });
+
+        const infowindowDiv = InfowindowBox({
+          name: filt[i].vt_acmdfclty_nm,
+          address: filt[i].dtl_adres,
+          lat: filt[i].ycord,
+          lng: filt[i].xcord,
+        });
+
+        const infowindow = new naver.maps.InfoWindow({
+          content: infowindowDiv,
+        });
+        naver.maps.Event.addListener(marker, 'click', () => {
+          if (infowindow.getMap()) {
+            infowindow.close();
+          } else {
+            const po = marker.getPosition();
+            map.panTo(po, { duration: 300, easing: 'linear' });
+            infowindow.open(map, marker);
+          }
+        });
+        naver.maps.Event.addListener(naverMap, 'drag', () => {
+          infowindow.close();
+        });
+        markerList.current.push({ marker, infowindow });
+      }
     }
   };
 
@@ -192,16 +194,12 @@ export default function NaverMap() {
         }
         markerList.current = [];
       }
-      if (naverMap.getZoom() > 13) {
-        updateMarkers(naverMap);
-      }
+      updateMarkers(naverMap);
       if (naverMap.hasListener('idle')) {
         naverMap.clearListeners('idle');
       }
       naverMap.addListener('idle', () => {
-        if (naverMap.getZoom() > 13) {
-          updateMarkers(naverMap);
-        }
+        updateMarkers(naverMap);
       });
       naverMap.addListener('zoom_changed', () => {
         if (naverMap.getZoom() < 14) {
