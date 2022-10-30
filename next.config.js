@@ -13,7 +13,9 @@ const nextConfig = {
     return config;
   },
   async redirects() {
-    return [{ source: '/', destination: '/map', permanent: true }];
+    return [
+      { source: '/', destination: '/map', permanent: true, statusCode: 301 },
+    ];
   },
 };
 
