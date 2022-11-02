@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
-import ImportIcon from '../SvgDynamic';
+import ImportIcon from '../common/SvgDynamic';
 
 export default function ReqBtns({
   getData,

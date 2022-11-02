@@ -3,8 +3,8 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { ApiTypes } from '../../types/apiType';
-import Loading from '../Loading';
-import ImportIcon from '../SvgDynamic';
+import Loading from '../common/Loading';
+import ImportIcon from '../common/SvgDynamic';
 import InfowindowBox from './InfowindowBox';
 import ReqBtns from './ReqBtns';
 

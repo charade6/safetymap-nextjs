@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import NavItem from '../NavItem';
+import NavItem from '../nav/NavItem';
 import HideNav from '../HideNav';
-import ImportIcon from '../SvgDynamic';
+import ImportIcon from '../common/SvgDynamic';
 
 export default function Layout({ children }: PropsWithChildren) {
   const router = useRouter();

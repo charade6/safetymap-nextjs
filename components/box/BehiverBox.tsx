@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import uuid from 'react-uuid';
-import ImportIcon from './SvgDynamic';
+import ImportIcon from '../common/SvgDynamic';
 
 interface Contents {
   text: string;

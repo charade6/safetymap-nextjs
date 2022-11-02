@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';

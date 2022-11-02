@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import uuid from 'react-uuid';
-import ImportIcon from './SvgDynamic';
+import ImportIcon from '../common/SvgDynamic';
 
 interface Nav {
   link: string;
@@ -16,7 +16,7 @@ export default function NavItem({ nav }: { nav: Nav[] }) {
     <>
       {nav.map((e, i) => {
         return (
-          <li key={uuid()} className="w-1/3">
+          <li key={uuid()} className="flex-1">
             <Link href={e.link}>
               <a
                 className={`flex flex-col items-center p-3 ${

@@ -6,7 +6,7 @@ interface Props extends SVGAttributes<SVGElement> {
 }
 
 const ImportIcon: FC<Props> = ({ icon, ...props }) => {
-  const Icon = dynamic(() => import(`../public/ico/${icon}.svg`));
+  const Icon = dynamic(() => import(`../../assets/ico/${icon}.svg`));
   return <Icon {...props} />;
 };
 

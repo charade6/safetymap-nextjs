@@ -1,6 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import uuid from 'react-uuid';
-import ImportIcon from './SvgDynamic';
+import ImportIcon from '../common/SvgDynamic';
 
 interface Contents {
   text: string;

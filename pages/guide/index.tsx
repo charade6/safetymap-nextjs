@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import BannerCarousel from '../../components/BannerCarousel';
-import BehaviorBox from '../../components/BehiverBox';
-import ImportIcon from '../../components/SvgDynamic';
+import BannerCarousel from '../../components/carousel/BannerCarousel';
+import BehaviorBox from '../../components/box/BehiverBox';
+import ImportIcon from '../../components/common/SvgDynamic';
 
 const Guide: NextPage = () => {
   return (

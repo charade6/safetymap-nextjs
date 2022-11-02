@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import ImportIcon from '../components/SvgDynamic';
+import ImportIcon from '../components/common/SvgDynamic';
 
 export default function NotFound() {
   const router = useRouter();

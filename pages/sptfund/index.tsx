@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import ImportIcon from '../../components/SvgDynamic';
+import ImportIcon from '../../components/common/SvgDynamic';
 
 const SupportFund: NextPage = () => {
   return (
