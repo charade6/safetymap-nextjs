@@ -1,20 +1,21 @@
 /* eslint-disable no-alert */
-/* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { ApiTypes } from '../../types/apiType';
 import Loading from '../common/Loading';
-import ImportIcon from '../common/SvgDynamic';
 import InfowindowBox from './InfowindowBox';
+import SearchBar from './SearchBar';
 import ReqBtns from './ReqBtns';
+import getData from '../../api';
 
 export default function NaverMap() {
+  const router = useRouter();
+  const { data } = router.query;
   const mapRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const clMarker = useRef<naver.maps.Marker>();
   const [naverMap, setNaverMap] = useState<naver.maps.Map>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [notiHide, setNotiHide] = useState<boolean>(true);
+  const api = useRef<ApiTypes>();
   const markerList = useRef<
     {
       marker: naver.maps.Marker;
@@ -22,85 +23,17 @@ export default function NaverMap() {
     }[]
   >([]);
 
-  const [api, setApi] = useState<ApiTypes>();
-
-  const findCurrentLocation = () => {
-    const markerImg: naver.maps.ImageIcon = {
-      url: './ico/icon-mymarker.svg',
-      scaledSize: new naver.maps.Size(50, 50),
-      anchor: naver.maps.Position.CENTER,
-    };
-    if (clMarker.current) {
-      clMarker.current.setMap(null);
-    }
-
-    if (navigator.geolocation && naverMap) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-        const latlng = new naver.maps.LatLng(lat, lng);
-
-        clMarker.current = new naver.maps.Marker({
-          position: latlng,
-          map: naverMap,
-          icon: markerImg,
-          zIndex: 30,
-          clickable: false,
-        });
-        naverMap.setCenter(latlng);
-      });
-    }
-  };
-
-  const searchAddress = () => {
-    if (inputRef.current?.value) {
-      naver.maps.Service.geocode(
-        { query: inputRef.current.value },
-        (status, response) => {
-          if (status !== naver.maps.Service.Status.OK) {
-            return alert('Something Wrong!');
-          }
-          if (response.v2.meta.totalCount === 0) {
-            return alert('올바른 주소를 입력해주세요.');
-          }
-          const result = response.v2.addresses[0];
-          const lat = Number(result.y);
-          const lng = Number(result.x);
-
-          return naverMap?.setCenter(new naver.maps.LatLng(lat, lng));
-        },
-      );
-    }
-  };
-
-  const getData = async (id: number) => {
+  const setApi = useCallback(async () => {
     setIsLoading(true);
-    const menuList: {
-      id: number;
-      name: string;
-      page: number;
-    }[] = [
-      { id: 1, name: 'TemporaryHousing', page: 15 },
-      { id: 2, name: 'TsunamiShelter', page: 1 },
-      { id: 3, name: 'EarthquakeIndoors', page: 6 },
-      { id: 4, name: 'EarthquakeOutdoors', page: 11 },
-    ];
-    const menu = menuList.find((e) => e.id === id);
-    const requestList = [];
-    for (let i = 0; i < menu!.page; i++) {
-      requestList.push(axios.get(`/api/${menu!.name}/${i + 1}`));
+    if (data && !Array.isArray(data)) {
+      try {
+        api.current = await getData(data);
+      } catch (error) {
+        alert('데이터 불러오기에 실패하였습니다.');
+      }
     }
-
-    await axios.all(requestList).then(
-      axios.spread((...responses) => {
-        const list: ApiTypes = [];
-
-        responses.forEach((e) => list.push(...e.data));
-        setApi(list);
-        setIsLoading(false);
-      }),
-    );
-  };
+    setIsLoading(false);
+  }, [data]);
 
   const initMap = () => {
     if (mapRef.current) {
@@ -112,13 +45,22 @@ export default function NaverMap() {
       setNaverMap(map);
     }
   };
+  const clearMarker = () => {
+    if (markerList.current.length > 0) {
+      for (let i = 0; i < markerList.current.length; i++) {
+        markerList.current[i].infowindow.close();
+        markerList.current[i].marker.setMap(null);
+      }
+      markerList.current = [];
+    }
+  };
 
-  const updateMarkers = (map: naver.maps.Map) => {
+  const updateMarkers = useCallback((map: naver.maps.Map) => {
     if (map.getZoom() > 13) {
       const mapBounds: naver.maps.Bounds = map.getBounds();
       const max: naver.maps.Point = mapBounds.getMax();
       const min: naver.maps.Point = mapBounds.getMin();
-      const filt = api!.filter(
+      const filtArray = api.current!.filter(
         (e) =>
           e.xcord > min.x &&
           e.xcord < max.x &&
@@ -134,124 +76,80 @@ export default function NaverMap() {
       markerList.current = markerList.current.filter(
         (e) => e.marker.getMap() !== null,
       );
-      for (let i = 0; i < filt.length; i++) {
+      for (let i = 0; i < filtArray.length; i++) {
         const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(filt[i].ycord, filt[i].xcord),
+          position: new naver.maps.LatLng(
+            filtArray[i].ycord,
+            filtArray[i].xcord,
+          ),
           map,
         });
 
         const infowindowDiv = InfowindowBox({
-          name: filt[i].vt_acmdfclty_nm,
-          address: filt[i].dtl_adres,
-          lat: filt[i].ycord,
-          lng: filt[i].xcord,
+          name: filtArray[i].vt_acmdfclty_nm,
+          address: filtArray[i].dtl_adres,
+          lat: filtArray[i].ycord,
+          lng: filtArray[i].xcord,
         });
 
         const infowindow = new naver.maps.InfoWindow({
           content: infowindowDiv,
         });
-        naver.maps.Event.addListener(marker, 'click', () => {
+        marker.addListenerOnce('click', () => {
+          infowindow.open(map, marker);
+        });
+        map.addListenerOnce('drag', () => {
           if (infowindow.getMap()) {
             infowindow.close();
-          } else {
-            const po = marker.getPosition();
-            map.panTo(po, { duration: 300, easing: 'linear' });
-            infowindow.open(map, marker);
           }
-        });
-        naver.maps.Event.addListener(naverMap, 'drag', () => {
-          infowindow.close();
         });
         markerList.current.push({ marker, infowindow });
       }
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      setApi();
+    }
+  }, [data, setApi]);
 
   useEffect(() => {
     initMap();
   }, [mapRef]);
 
   useEffect(() => {
-    if (api && naverMap) {
-      if (markerList.current.length > 0) {
-        for (let i = 0; i < markerList.current.length; i++) {
-          markerList.current[i].infowindow.close();
-          markerList.current[i].marker.setMap(null);
-        }
-        markerList.current = [];
-      }
-      updateMarkers(naverMap);
-      if (naverMap.hasListener('idle')) {
-        naverMap.clearListeners('idle');
-      }
+    if (naverMap) {
+      clearMarker();
       naverMap.addListener('idle', () => {
-        updateMarkers(naverMap);
+        if (api.current) {
+          updateMarkers(naverMap);
+        }
       });
       naverMap.addListener('zoom_changed', () => {
         if (naverMap.getZoom() < 14) {
-          for (let i = 0; i < markerList.current.length; i++) {
-            markerList.current[i].infowindow.close();
-            markerList.current[i].marker.setMap(null);
-          }
-          markerList.current = [];
           setNotiHide(false);
+          clearMarker();
         } else {
           setNotiHide(true);
         }
       });
     }
-  }, [api, naverMap]);
+  }, [naverMap, updateMarkers]);
 
   return (
     <div>
       {isLoading && <Loading />}
-      <div className="fixed flex place-content-between z-40 w-4/5 bg-white py-2 border shadow-nav top-10 left-2/4 translate-x-[-50%] rounded-full">
-        <input
-          className="w-5/6 ml-4 focus:outline-none"
-          placeholder="현재 위치를 입력해주세요."
-          onKeyUp={(e) => {
-            if (e.key === 'Enter') {
-              searchAddress();
-            }
-          }}
-          type="text"
-          ref={inputRef}
-        />
-        <div className="flex justify-center mr-4">
-          <button
-            className="hidden sm:block"
-            onClick={() => findCurrentLocation()}
-            type="button"
-          >
-            <ImportIcon icon="icon-gps" className="w-[24px]" />
-          </button>
-          <button
-            className="ml-[20px]"
-            onClick={() => searchAddress()}
-            type="button"
-          >
-            <ImportIcon icon="icon-search" className="w-[24px]" />
-          </button>
-        </div>
-      </div>
-      <div className="fixed z-40 bg-white rounded-full left-[5%] bottom-[20%] shadow-nav">
-        <button
-          className="p-4 sm:hidden"
-          onClick={() => findCurrentLocation()}
-          type="button"
-        >
-          <ImportIcon icon="icon-gps" className="w-[24px]" />
-        </button>
-      </div>
+      <SearchBar naverMap={naverMap} />
       <div
         id="noti"
-        className={`fixed z-40 px-6 py-2 bg-white text-sm rounded-full shadow-nav left-2/4 top-24 translate-x-[-50%] ${
-          notiHide ? 'hidden' : 'block'
+        className={`fixed z-40 px-6 py-2 bg-white text-sm rounded-full shadow-nav left-2/4 top-24 translate-x-[-50%] transition-all ${
+          notiHide ? 'opacity-0 invisible' : 'opacity-100 visible'
         }`}
       >
         지도를 확대해 주세요!
       </div>
-      <ReqBtns getData={getData} />
+      <ReqBtns />
       <div className="w-full h-screen" ref={mapRef} />
     </div>
   );
