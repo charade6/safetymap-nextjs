@@ -1,20 +1,36 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import throttle from 'lodash/throttle';
 import NavItem from '../nav/NavItem';
-import HideNav from '../HideNav';
 import ImportIcon from '../common/SvgDynamic';
 
 export default function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
+  const YOffset = useRef<number>(0);
+  const [isNavHide, setIsNavHide] = useState(false);
   const navList = [
     { link: '/guide', icon: 'icon-running', name: '가이드' },
     { link: '/map', icon: 'icon-location', name: '대피소' },
     { link: '/sptfund', icon: 'icon-money', name: '지원금' },
   ];
   const title = `주변 대피소 찾기 | ${
-    navList.find((e) => router.pathname.includes(e.link))?.name
+    navList.find((e) => router.asPath.includes(e.link))?.name
   }`;
+
+  useEffect(() => {
+    window.addEventListener(
+      'scroll',
+      throttle(() => {
+        if (YOffset.current < window.pageYOffset) {
+          setIsNavHide(true);
+        } else {
+          setIsNavHide(false);
+        }
+        YOffset.current = window.pageYOffset;
+      }, 100),
+    );
+  }, []);
 
   return (
     <div>
@@ -22,8 +38,9 @@ export default function Layout({ children }: PropsWithChildren) {
         <title>{title}</title>
       </Head>
       <nav
+        id="nav"
         className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white border rounded-full bottom-[3%] left-2/4 shadow-nav max-w-[460px] transition-all ${
-          HideNav() ? 'visible opacity-100' : 'invisible opacity-0'
+          isNavHide ? 'invisible opacity-0' : 'visible opacity-100'
         }`}
       >
         <ul className="flex items-center justify-around w-full text-xs sm:text-base">
