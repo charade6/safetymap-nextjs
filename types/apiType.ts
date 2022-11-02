@@ -58,3 +58,9 @@ export type TsunamiShelter = {
   xcord: number;
   ycord: number;
 };
+
+export type ApiTypes =
+  | TemporaryHousing[]
+  | TsunamiShelter[]
+  | EarthquakeOutdoors[]
+  | EarthquakeIndoors[];

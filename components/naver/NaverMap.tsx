@@ -2,12 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import {
-  TemporaryHousing,
-  EarthquakeIndoors,
-  EarthquakeOutdoors,
-  TsunamiShelter,
-} from '../../types/apiType';
+import { ApiTypes } from '../../types/apiType';
 import Loading from '../Loading';
 import ImportIcon from '../SvgDynamic';
 import InfowindowBox from './InfowindowBox';
@@ -27,12 +22,7 @@ export default function NaverMap() {
     }[]
   >([]);
 
-  const [api, setApi] = useState<
-    | EarthquakeOutdoors[]
-    | EarthquakeIndoors[]
-    | TemporaryHousing[]
-    | TsunamiShelter[]
-  >();
+  const [api, setApi] = useState<ApiTypes>();
 
   const findCurrentLocation = () => {
     const markerImg: naver.maps.ImageIcon = {
@@ -103,11 +93,7 @@ export default function NaverMap() {
 
     await axios.all(requestList).then(
       axios.spread((...responses) => {
-        const list:
-          | TemporaryHousing[]
-          | EarthquakeIndoors[]
-          | EarthquakeOutdoors[]
-          | TsunamiShelter[] = [];
+        const list: ApiTypes = [];
 
         responses.forEach((e) => list.push(...e.data));
         setApi(list);
