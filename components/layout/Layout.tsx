@@ -34,9 +34,11 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      {navList.find((e) => e.link === router.pathname) && (
+        <Head>
+          <title>{title}</title>
+        </Head>
+      )}
       <nav
         id="nav"
         className={`fixed z-50 w-4/5 m-auto font-bold translate-x-[-50%] bg-white border rounded-full bottom-[3%] left-2/4 shadow-nav max-w-[460px] transition-all ${
