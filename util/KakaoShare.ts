@@ -1,10 +1,16 @@
-export default function KakaoShare({
+export const kakaoLoad = () => {
+  if (!window.Kakao.isInitialized()) {
+    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+  }
+};
+
+export const kakaoShare = ({
   address,
   name,
 }: {
   address: string;
   name: string;
-}) {
+}) => {
   window.Kakao.Share.sendDefault({
     objectType: 'location',
     address,
@@ -20,4 +26,4 @@ export default function KakaoShare({
     },
     buttonTitle: '홈페이지로',
   });
-}
+};

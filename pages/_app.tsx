@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import Layout from '../components/layout/Layout';
-
-declare global {
-  interface Window {
-    Kakao: any;
-  }
-}
+import { kakaoLoad } from '../util/kakaoShare';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,11 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         src="https://developers.kakao.com/sdk/js/kakao.js"
         defer
         async
-        onLoad={() => {
-          if (!window.Kakao.isInitialized()) {
-            window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
-          }
-        }}
+        onLoad={() => kakaoLoad()}
       />
       <Component {...pageProps} />
     </Layout>
