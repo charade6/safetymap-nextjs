@@ -50,10 +50,10 @@ export default function Layout({ children }: PropsWithChildren) {
       {children}
       {router.pathname === '/map' || router.pathname === '/404' ? null : (
         <footer className="flex flex-col h-[200px] bg-[#F2F2F2] text-center text-[#A2A8A5] justify-center">
-          <h3 className="mb-2 text-base font-bold sm:text-lg md:text-xl">
+          <h1 className="mb-2 text-base font-bold sm:text-lg md:text-xl">
             <ImportIcon icon="icon-logo" className="inline mr-3" />
             주변 대피소 찾기
-          </h3>
+          </h1>
           <p className="text-xs sm:text-sm md:text-base">
             <span className="font-bold">학과</span> 컴퓨터정보학부 &#124;&#160;
             <span className="font-bold">제작</span> 학점대피소

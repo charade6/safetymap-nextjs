@@ -34,11 +34,11 @@ export default function BehaviorBox({
                 />
               </div>
               <div className="flex flex-col-reverse items-center w-full p-4 md:p-6 md:items-baseline md:flex-col group-hover:p-2 md:group-hover:p-4">
-                <h2 className="mt-3 text-base font-bold text-white md:mt-0 sm:text-lg md:text-2xl group-hover:text-black">
+                <h3 className="mt-3 text-base font-bold text-white md:mt-0 sm:text-lg md:text-2xl group-hover:text-black">
                   {e.text}
                   <br />
                   행동 요령
-                </h2>
+                </h3>
                 <ImportIcon
                   icon={e.icon}
                   className="ml-2/4 md:ml-auto fill-white group-hover:fill-[#333333] w-[42px] h-[42px] sm:w-[52px] sm:h-[52px] md:w-[63px] md:h-[63px] lg:w-[74px] lg:h-[74px]"

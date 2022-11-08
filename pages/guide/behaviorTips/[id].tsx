@@ -39,9 +39,9 @@ export default function BehaviorTipsDetail({
         <title>주변 대피소 찾기 | 가이드 - {title} 행동 요령</title>
       </Head>
       <main className="w-full max-w-[1280px] min-h-[70vh] mx-auto my-12 px-3 xl:px-0">
-        <h1 className="mb-3 text-xl font-medium md:text-2xl">
+        <h2 className="mb-3 text-xl font-medium md:text-2xl">
           {title} 행동 요령
-        </h1>
+        </h2>
         {data.map((e, i, a) => (
           <div
             key={uuid()}

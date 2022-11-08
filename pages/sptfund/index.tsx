@@ -12,9 +12,9 @@ const SupportFund: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h1 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
+          <h3 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
             재난 피해
-          </h1>
+          </h3>
           <ImportIcon
             icon="icon-money"
             className="w-[43px] sm:w-[54px] h-fit fill-[#151816]"
@@ -27,9 +27,9 @@ const SupportFund: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h1 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
+          <h3 className="mt-4 text-base font-medium sm:mt-0 sm:text-2xl md:text-3xl">
             이재민
-          </h1>
+          </h3>
           <ImportIcon
             icon="main_side_one"
             className="w-[43px] sm:w-[54px] h-2/4 sm:h-fit fill-[#151816]"
@@ -42,11 +42,11 @@ const SupportFund: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h1 className="text-2xl font-bold md:text-3xl md:mt-auto">
+          <h3 className="text-2xl font-bold md:text-3xl md:mt-auto">
             2022년
             <br />
             폭우 피해 재난지원금
-          </h1>
+          </h3>
           <ImportIcon
             icon="icon-rainbow"
             className="w-[94px] sm:w-[106px] md:w-[118px] md:h-fit ml-auto md:ml-0 md:my-auto"
@@ -59,11 +59,11 @@ const SupportFund: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="text-xl font-medium">
+          <h3 className="text-xl font-medium">
             수해 현장
             <br />
             자원 봉사자 모집
-          </h2>
+          </h3>
           <ImportIcon
             icon="icon-hearthand"
             className="w-[55px] md:w-[63px] h-fit"
@@ -76,16 +76,16 @@ const SupportFund: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="hidden text-xl font-medium md:block">
+          <h3 className="hidden text-xl font-medium md:block">
             무료 집수리
             <br />
             &#39;희망의 집수리&#39; 신청
-          </h2>
-          <h2 className="text-lg font-medium md:hidden">
+          </h3>
+          <h3 className="text-lg font-medium md:hidden">
             희망의
             <br />
             집수리 신청
-          </h2>
+          </h3>
           <ImportIcon
             icon="icon-hearthouse"
             className="w-[50px] h-fit md:w-[63px] ml-auto"
@@ -103,14 +103,14 @@ const SupportFund: NextPage = () => {
             className="md:mr-6 w-fit h-[55px] md:h-[52px]"
             viewBox="0 0 79 69"
           />
-          <h2 className="hidden text-xl font-medium md:block">
+          <h3 className="hidden text-xl font-medium md:block">
             재난 심리 회복 지원 센터
-          </h2>
-          <h2 className="text-xl font-medium md:hidden">
+          </h3>
+          <h3 className="text-xl font-medium md:hidden">
             재난 심리
             <br />
             회복 지원 센터
-          </h2>
+          </h3>
         </a>
         <a
           href="https://www.redcross.or.kr/voluntary/rescue_support.do"
@@ -123,14 +123,14 @@ const SupportFund: NextPage = () => {
             className="ml-auto md:ml-0 md:mr-6 w-fit h-[55px] md:h-[47px]"
             viewBox="0 0 55 55"
           />
-          <h2 className="hidden text-xl font-medium md:block">
+          <h3 className="hidden text-xl font-medium md:block">
             이재민 구호 지원 안내
-          </h2>
-          <h2 className="text-lg font-medium md:hidden">
+          </h3>
+          <h3 className="text-lg font-medium md:hidden">
             이재민
             <br />
             구호 지원 안내
-          </h2>
+          </h3>
         </a>
       </div>
     </main>

@@ -72,9 +72,9 @@ const Guide: NextPage = () => {
               viewBox="0 0 44 44"
             />
             <div className="flex flex-col justify-center">
-              <h2 className="text-base font-medium sm:text-lg md:text-xl">
+              <h3 className="text-base font-medium sm:text-lg md:text-xl">
                 재난 대피 체크리스트
-              </h2>
+              </h3>
               <span className="text-xs sm:text-sm md:text-base">
                 나는 얼마나 준비했을까?
               </span>
@@ -93,9 +93,9 @@ const Guide: NextPage = () => {
               viewBox="0 0 54 54"
             />
             <div className="flex flex-col justify-center">
-              <h2 className="text-base font-medium sm:text-lg md:text-xl">
+              <h3 className="text-base font-medium sm:text-lg md:text-xl">
                 농업 피해 예방
-              </h2>
+              </h3>
               <span className="text-xs sm:text-sm md:text-base">
                 농업 피해를 예방하세요.
               </span>

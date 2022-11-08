@@ -26,11 +26,11 @@ const BannerCarousel = ({ contents }: { contents: Contents[] }) => {
               rel="noopener noreferrer"
             >
               <div className="flex flex-col md:h-[250px] md:flex-row p-7 box-border">
-                <h1 className="text-xl font-bold text-white sm:text-2xl md:text-3xl">
+                <h3 className="text-xl font-bold text-white sm:text-2xl md:text-3xl">
                   {e.text}
                   <br />
                   어떻게 하지?
-                </h1>
+                </h3>
                 <ImportIcon
                   icon={e.icon}
                   className="ml-auto mt-auto w-fit h-[114px]"
