@@ -14,7 +14,7 @@ export default function SearchBar({
     <>
       <div
         className={`fixed flex place-content-between z-40 w-4/5 bg-white py-2 border shadow-nav left-2/4 translate-x-[-50%] rounded-full transition-all ${
-          naver.isHide ? 'top-[-50px]' : 'top-10'
+          naver.uiHide ? 'top-[-50px]' : 'top-10'
         }`}
       >
         <input
@@ -49,7 +49,7 @@ export default function SearchBar({
       </div>
       <div
         className={`fixed z-40 bg-white rounded-full left-[5%] shadow-nav transition-all ${
-          naver.isHide ? 'bottom-[-20%]' : 'bottom-[20%]'
+          naver.uiHide ? 'bottom-[-20%]' : 'bottom-[20%]'
         }`}
       >
         <button

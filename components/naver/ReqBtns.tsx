@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
 import ImportIcon from '../common/SvgDynamic';
 
@@ -40,10 +40,10 @@ export default function ReqBtns() {
     },
   ];
 
-  const onClickHandler = (name: string, index: number) => {
-    setBtnActive(index);
-    router.replace({ query: { type: name } });
-  };
+  useEffect(() => {
+    const activeIdx = btnList.findIndex((e) => e.name === router.query.type);
+    setBtnActive(activeIdx);
+  }, [router.query.type]);
 
   return (
     <div
@@ -69,7 +69,7 @@ export default function ReqBtns() {
               ? 'rounded-bl-[4px]'
               : ''
           } ${btnActive === i && 'bg-[#009548] text-white'}`}
-          onClick={() => onClickHandler(e.name, i)}
+          onClick={() => router.replace({ query: { type: e.name } })}
           type="button"
         >
           <ImportIcon
