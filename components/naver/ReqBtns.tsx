@@ -42,7 +42,7 @@ export default function ReqBtns() {
 
   const onClickHandler = (name: string, index: number) => {
     setBtnActive(index);
-    router.replace({ query: { data: name } });
+    router.replace({ query: { type: name } });
   };
 
   return (
