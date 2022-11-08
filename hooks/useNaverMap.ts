@@ -128,6 +128,7 @@ const useNaverMap = (map?: naver.maps.Map) => {
             address: filtArray[i].dtl_adres,
             lat: filtArray[i].ycord,
             lng: filtArray[i].xcord,
+            maptype: apiname.current!.toString(),
           });
           const infowindow = new naver.maps.InfoWindow({
             content: infowindowDiv,
@@ -141,7 +142,6 @@ const useNaverMap = (map?: naver.maps.Map) => {
                   lng: filtArray[i].xcord,
                 },
               });
-              // infowindow.open(naverMap, marker);
             } else {
               infowindow.close();
               router.replace({ query: { type: apiname.current } });

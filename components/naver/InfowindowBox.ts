@@ -5,11 +5,13 @@ export default function InfowindowBox({
   address,
   lat,
   lng,
+  maptype,
 }: {
   name: string;
   address: string;
   lat: number;
   lng: number;
+  maptype: string;
 }): HTMLDivElement {
   const infowindowDiv: HTMLDivElement = document.createElement('div');
   const spanElement1: HTMLSpanElement = document.createElement('span');
@@ -81,7 +83,9 @@ export default function InfowindowBox({
   shareBtn.append(shareIco, '공유');
   drctnBtn.append(drctnIco, '길찾기');
 
-  shareBtn.addEventListener('click', () => kakaoShare({ address, name }));
+  shareBtn.addEventListener('click', () =>
+    kakaoShare({ address, name, lat, lng, maptype }),
+  );
   drctnBtn.addEventListener('click', () =>
     window.open(
       `http://map.naver.com/index.nhn?elng=${lng}&elat=${lat}&etext=${name}`,
