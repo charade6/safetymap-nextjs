@@ -24,13 +24,16 @@ const useAxios = () => {
       axios.get(`/api/${name}/${i + 1}`),
     );
 
-    await axios.all(requestList).then(
-      axios.spread((...responses) => {
-        const list: ApiTypes = [];
-        responses.forEach((e) => list.push(...e.data));
-        api.current = list;
-      }),
-    );
+    await axios
+      .all(requestList)
+      .then(
+        axios.spread((...responses) => {
+          const list: ApiTypes = [];
+          responses.forEach((e) => list.push(...e.data));
+          api.current = list;
+        }),
+      )
+      .catch(() => alert('서버 오류\n잠시후 다시 시도해주세요.'));
 
     setIsLoading(false);
   };
