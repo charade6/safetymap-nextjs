@@ -1,4 +1,4 @@
-import KakaoShare from '../../util/KakaoShare';
+import { kakaoShare } from '../../util/kakaoShare';
 
 export default function InfowindowBox({
   name,
@@ -81,7 +81,7 @@ export default function InfowindowBox({
   shareBtn.append(shareIco, '공유');
   drctnBtn.append(drctnIco, '길찾기');
 
-  shareBtn.addEventListener('click', () => KakaoShare({ address, name }));
+  shareBtn.addEventListener('click', () => kakaoShare({ address, name }));
   drctnBtn.addEventListener('click', () =>
     window.open(
       `http://map.naver.com/index.nhn?elng=${lng}&elat=${lat}&etext=${name}`,

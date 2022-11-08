@@ -6,10 +6,18 @@ const nextConfig = {
     domains: ['mepv2.safekorea.go.kr'],
   },
   webpack: (config) => {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: ['@svgr/webpack'],
-    });
+    config.module.rules.push(
+      {
+        test: /\.svg$/i,
+        resourceQuery: { not: [/url/] },
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/,
+      },
+    );
     return config;
   },
   async redirects() {
