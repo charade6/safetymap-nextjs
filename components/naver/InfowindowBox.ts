@@ -1,15 +1,13 @@
-import { kakaoShare } from '../../util/kakaoShare';
-
 export default function InfowindowBox({
   name,
   address,
-  lat,
-  lng,
-}: {
+}: // lat,
+// lng,
+{
   name: string;
   address: string;
-  lat: number;
-  lng: number;
+  // lat: number;
+  // lng: number;
 }): HTMLDivElement {
   const infowindowDiv: HTMLDivElement = document.createElement('div');
   const spanElement1: HTMLSpanElement = document.createElement('span');
@@ -81,12 +79,12 @@ export default function InfowindowBox({
   shareBtn.append(shareIco, '공유');
   drctnBtn.append(drctnIco, '길찾기');
 
-  shareBtn.addEventListener('click', () => kakaoShare({ address, name }));
-  drctnBtn.addEventListener('click', () =>
-    window.open(
-      `http://map.naver.com/index.nhn?elng=${lng}&elat=${lat}&etext=${name}`,
-    ),
-  );
+  // shareBtn.addEventListener('click', () => kakaoShare({ address, name }));
+  // drctnBtn.addEventListener('click', () =>
+  //   window.open(
+  //     `http://map.naver.com/index.nhn?elng=${lng}&elat=${lat}&etext=${name}`,
+  //   ),
+  // );
 
   btnBox.append(shareBtn, drctnBtn);
   infowindowDiv.append(spanElement1, name, spanElement2, address, btnBox);

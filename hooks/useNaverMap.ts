@@ -126,8 +126,8 @@ const useNaverMap = (map?: naver.maps.Map) => {
           const infowindowDiv = InfowindowBox({
             name: filtArray[i].vt_acmdfclty_nm,
             address: filtArray[i].dtl_adres,
-            lat: filtArray[i].ycord,
-            lng: filtArray[i].xcord,
+            // lat: filtArray[i].ycord,
+            // lng: filtArray[i].xcord,
           });
           const infowindow = new naver.maps.InfoWindow({
             content: infowindowDiv,
