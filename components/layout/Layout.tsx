@@ -15,7 +15,7 @@ export default function Layout({ children }: PropsWithChildren) {
     { link: '/sptfund', icon: 'icon-money', name: '지원금' },
   ];
   const title = `주변 대피소 찾기 | ${
-    navList.find((e) => router.asPath.includes(e.link))?.name
+    navList.find((e) => e.link === router.pathname)?.name
   }`;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Layout({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
@@ -61,6 +61,6 @@ export default function Layout({ children }: PropsWithChildren) {
           <p>Copyright &#169; credit shelter All Rights Reserved</p>
         </footer>
       )}
-    </div>
+    </>
   );
 }
